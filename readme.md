@@ -4,6 +4,7 @@
 # The `tscsdep` package
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/STADL)](https://CRAN.R-project.org/package=tscsdep)
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
