@@ -1,6 +1,6 @@
 Package: tscsdep
 Type: Package
-Title: Tools for analyzing data with spatial and temporal dependence
+Title: Tools for analyzing country-year time-series-cross-sectional data with spatial and temporal dependence.
 Version: 0.1.0
 Author: Jude Hays [aut, cre]
 Authors@R: c(person(given = "Jude",
