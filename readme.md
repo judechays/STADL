@@ -5,10 +5,11 @@
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/STADL)](https://CRAN.R-project.org/package=tscsdep)
-
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![R build
+status](https://github.com/judechays/tscsdep/workflows/R-CMD-check/badge.svg)](https://github.com/judechays/tscsdep/actions)
 <!-- badges: end -->
 
 ## Description
