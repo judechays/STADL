@@ -84,7 +84,7 @@ matrix created using the `make_ntspmat` function.
 
 ### Indicators and Variables
 
-![](asa.jpg)
+![](man/Figures/asa.jpg)
 
 ### Tools for merging your data with `cshapes`
 
