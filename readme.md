@@ -6,7 +6,7 @@
 ## Description
 
 A package to estimate models addressing spatial and temporal dependence
-as argued by Cook, Hays and Franzese (2021). This packages provides the
+as argued by Cook, Hays and Franzese (2021). This package provides the
 tools for creating geographic spatial weights matrices considering
 k-nearest neighbors. It also allows to estimate Spatial AutoRegressive
 (SAR), error (SEM) lag models, and Spatial Autocorrelation model (SAC).
@@ -26,7 +26,7 @@ It can be installed using `devtools`
 ## Functions
 
 At present, it can create a weight matrix for all countries until year
-2016. Maps come from `cshape` package.
+2019. Maps come from `cshapes` package.
 
 |            Object             |          Method          |            Variables            |               Function                |
 |:-----------------------------:|:------------------------:|:-------------------------------:|:-------------------------------------:|
@@ -82,7 +82,26 @@ where *ols* again refers to the object associated with the outcome of a
 regression (`lm(formula = y ~ x, data = data)`), and *W* is the weight
 matrix created using the `make_ntspmat` function.
 
-### Indicators and Variables
+### Parameters, Functions and Outputs
+
+-   <p style="color:#808080">
+    Inputs parameters (grey)
+    <p>
+    The functions have four parameters as inputs: country names *ci*,
+    years *yi*, number of neighbors *k*, and linear regression model
+    *lmobj*.
+
+-   <p style="color: #00bfff">
+    Functions (blue)
+    <p>
+    The functions are four. They take as inputs the parameters, and have
+    some outputs.
+
+-   <p style="color: #ff6600">
+    Outputs (orange)
+    </p>
+    Each function has an output. For example, *make_ntspmat()* function
+    generates as as output the *weight matrix*.
 
 ![](man/Figures/asa.jpg)
 
@@ -1038,18 +1057,21 @@ citation("tscsdep")
 #> 
 #> To cite package 'tscsdep' in publications use:
 #> 
-#>   Jude Hays (NA). tscsdep: Tools for analyzing data with spatial and
-#>   temporal dependence.. R package version 0.1.0.
+#>   Jude Hays and Valentina González-Rostani (NA). tscsdep: Tools for
+#>   analyzing data with spatial and temporal dependence.. R package
+#>   version 0.1.0. https://github.com/judechays/STADL
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {tscsdep: Tools for analyzing data with spatial and temporal dependence.},
-#>     author = {Jude Hays},
+#>     author = {Jude Hays and Valentina González-Rostani},
 #>     note = {R package version 0.1.0},
+#>     url = {https://github.com/judechays/STADL},
 #>   }
 ```
 
 ## Author
 
-Jude Hays (<jch61@pitt.edu>)
+Jude Hays (<jch61@pitt.edu>) and Valentina González-Rostani
+(<mag384@pitt.edu>
