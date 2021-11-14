@@ -35,9 +35,11 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
   # Collect Information about the sample: (country names: c), (years: y), and (max number of time period: yl)
 
 
-  c<-unique(df$ci)
-  y<-sort(as.factor(unique(df$yi)),decreasing=FALSE)
+  attach(df)
+  c<-unique(ci)
+  y<-sort(as.factor(unique(yi)),decreasing=FALSE)
   yl<-length(y)
+  detach(df)
 
 
   # Identify start year for each country in the sample (start_dta)
