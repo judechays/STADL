@@ -6,6 +6,9 @@
 \usage{
 names_list(a)
 }
+\arguments{
+\item{a}{it can be anything, or left empty.}
+}
 \value{
 The output will be a list of all country name in cshapes.
 }
