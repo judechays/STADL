@@ -128,7 +128,7 @@ ggdag_status(simple_dag,
   guides(fill = FALSE, color = FALSE) +  
   theme_dag()
 ```
-![](asa.jpg)
+![](man/figures/asa.jpg)
 
 
 ### Tools for merging your data with `cshapes`
