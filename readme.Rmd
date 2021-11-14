@@ -96,7 +96,7 @@ where *ols* again refers to the object associated with the outcome of a regressi
 
 ### Indicators and Variables
 
-```{r, echo = FALSE, message = FALSE, warning=FALSE}
+```{r, echo = FALSE, message = FALSE, warning=FALSE, eval=FALSE}
 library(dagitty)
 library(ggdag)
 library(ggplot2)
@@ -105,17 +105,17 @@ library(ggplot2)
 
 
 simple_dag <- dagify(
-  F_W ~ lmobj + ci + yi + k,
-  F_SAC ~ WM + lmobj,
-  F_SAR ~ WM + lmobj,
-  F_SEM ~ WM + lmobj,
-  SAC ~ F_SAC,
-  SAR ~ F_SAR,
-  SEM ~ F_SEM,
-  WM ~ F_W,
+  FW ~ lmobj + ci + yi + k,
+  FSAC ~ WM + lmobj,
+  FSAR ~ WM + lmobj,
+  FSEM ~ WM + lmobj,
+  SAC ~ FSAC,
+  SAR ~ FSAR,
+  SEM ~ FSEM,
+  WM ~ FW,
   exposure = c("WM","SAR","SEM", "SAC"),
-  outcome = c("F_SAC", "F_SAR","F_SEM","F_W"),
-  labels = c(F_SAC = "ntspsac()", F_SAR = "ntspreg()", F_SEM = "ntsperr()", F_W = "make_ntspmat()"),
+  outcome = c("FSAC", "FSAR","FSEM","FW"),
+  labels = c(FSAC = "ntspsac()", FSAR = "ntspreg()", FSEM = "ntsperr()", FW = "make_ntspmat()"),
     coords = list(x = c(x = 1, a = 2, b = 2, y = 3),
                 y = c(x = 2, a = 1, b = 3, y = 2))
 )
@@ -124,10 +124,12 @@ simple_dag <- dagify(
 
 
 ggdag_status(simple_dag, 
-             use_labels = "label", size=3, color="black") +
+             use_labels = "label", size=2, color="black") +
   guides(fill = FALSE, color = FALSE) +  
   theme_dag()
 ```
+![](asa.jpg)
+
 
 ### Tools for merging your data with `cshapes`
 
@@ -147,8 +149,20 @@ If you run the code for creating the weight matrix and you receive a message say
 
 ##### List of all country names in `cshapes`
 
-```{r}
+```{r, eval=F}
 names_list()
+```
+
+You will see a list with all country names which looks like this: 
+
+```{}
+#>   [1] "United States of America"             
+#>   [2] "Canada"                               
+#>   [3] "Bahamas"                              
+#>   [4] "Cuba"                                 
+#>   [5] "Haiti"                                
+#>   [6] "Dominican Republic"                   
+#>   [7] "Jamaica"                 
 ```
 
 ##### Looking at specific countries and starting/ending date in `cshapes` if you have countries' war codes
