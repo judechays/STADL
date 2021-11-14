@@ -12,6 +12,7 @@
 #' @return The output will be a matrix.
 #' @example
 #' results <- make_ntspmat(ols, country_name, year, 5)
+#' @export
 make_ntspmat <- function(lmobj,ci,yi,k) {
   
   # Identify and subset the sample (df) from the regression, using the estimated disturbances.
