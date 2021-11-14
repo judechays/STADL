@@ -23,9 +23,15 @@ library(tidyverse)
 
 # The `tscsdep` package
 
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/STADL)](https://CRAN.R-project.org/package=tscsdep)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+<!-- badges: end -->
+
 ## Description
 
-A package to estimate models addressing spatial and temporal dependence as argued by Cook, Hays and Franzese (2021). This packages provides the tools for creating geographic spatial weights matrices considering k-nearest neighbors. It also allows to estimate Spatial AutoRegressive (SAR), error (SEM) lag models, and Spatial Autocorrelation model (SAC).
+A package to estimate models addressing spatial and temporal dependence as argued by Cook, Hays and Franzese (2021). This package provides the tools for creating geographic spatial weights matrices considering k-nearest neighbors. It also allows to estimate Spatial AutoRegressive (SAR), error (SEM) lag models, and Spatial Autocorrelation model (SAC).
 
 The `tscsdep` package aims to provide researchers tools for analyzing data with spatial and temporal dependence. It helps to specify spatio-temporal models, and to diagnostic which model is best suited.
 
@@ -39,7 +45,7 @@ It can be installed using `devtools`
 
 ## Functions
 
-At present, it can create a weight matrix for all countries until year 2016. Maps come from `cshape` package.
+At present, it can create a weight matrix for all countries until year 2019. Maps come from `cshapes` package.
 
 
 +-------------------------------+--------------------------+---------------------------------+---------------------------------------+
@@ -94,7 +100,11 @@ ntspsac(ols, W)
 where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and $W$ is the weight matrix created using the `make_ntspmat` function.
 
 
-### Indicators and Variables
+### Parameters, Functions and Outputs
+
+* <p style="color:#808080">Inputs parameters (grey)<p>The functions have four parameters as inputs: country names *ci*, years *yi*, number of neighbors *k*, and linear regression model *lmobj*. 
+* <p style="color: #00bfff">Functions (blue)<p> The functions are four. They take as inputs the parameters, and have some outputs. 
+* <p style="color: #ff6600"> Outputs (orange)</p>Each function has an output. For example, *make_ntspmat()* function generates as as output the *weight matrix*.
 
 ```{r, echo = FALSE, message = FALSE, warning=FALSE, eval=FALSE}
 library(dagitty)
@@ -128,7 +138,7 @@ ggdag_status(simple_dag,
   guides(fill = FALSE, color = FALSE) +  
   theme_dag()
 ```
-![](man/figures/asa.jpg)
+![](man/Figures/asa.jpg)
 
 
 ### Tools for merging your data with `cshapes`
@@ -502,6 +512,10 @@ To cite `tscsdep` in publications, please use:
 citation("tscsdep") 
 ```
 
-## Author
+## Authors
+
+Jude Hays ([jch61\@pitt.edu](mailto:jch61@pitt.edu){.email}) and Valentina González-Rostani ([mag384\@pitt.edu](mailto:mag384@pitt.edu))
+
+### Mantainer 
 
 Jude Hays ([jch61\@pitt.edu](mailto:jch61@pitt.edu){.email})

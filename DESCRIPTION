@@ -1,19 +1,24 @@
 Package: tscsdep
 Type: Package
-Title: Tools for analyzing data with spatial and temporal dependence.
+Title: Tools for analyzing data with spatial and temporal dependence
 Version: 0.1.0
 Author: Jude Hays [aut, cre]
-Authors@R: person(given = "Jude",
+Authors@R: c(person(given = "Jude",
                   family = "Hays",
                   email = "jch61@pitt.edu",
-                  role = c("aut", "cre"))
+                  role = c("aut", "cre")),
+             person(given = "Valentina",
+                  family = "González-Rostani",
+                  email = "mag384@pitt.edu",
+                  role = c("aut"))
+                  )
 Maintainer: Jude Hays <jch61@pitt.edu>
 Description: This package contains multiple functions that help create  
      geographic spatial weights matrices and estimate spatial lag models. 
      At present, it can estimate weights matrices of unbalanced data until 
      year 2019. It also provides researchers with tools to estimate a Spatial 
      AutoRegressive (SAR) lag model, error model (SEM), and Spatial Autocorrelation (SAC).
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/judechays/STADL
@@ -23,11 +28,12 @@ Imports:
     dplyr,
     Matrix,
     spdep,
+    sf,
     spatialreg,
     stargazer,
     lubridate,
     tidyverse
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: 
     knitr,
     rmarkdown,
