@@ -7,6 +7,7 @@
 #' @return The output will be the country name as it appears in cshapes, start and end date of the country in cshapes data.
 #' @example
 #' name_code(2)
+#' @importFrom cshapes cshp
 #' @export
 name_code <- function(warcode) {
   cs2<-cshp(date = NA, useGW = TRUE, dependencies = FALSE)
@@ -19,6 +20,7 @@ name_code <- function(warcode) {
 #'
 #' \code{names_list} this function provides you with the list of all country names in cshapes.
 #'
+#' @param a it can be anything, or left empty.
 #' @return The output will be a list of all country name in cshapes.
 #' @example
 #' name_list()

@@ -9,6 +9,7 @@
 #' @return The output will be SAR model estimated.
 #' @example
 #' sar_reex <- ntspreg(ols,wm)
+#' @import spdep
 #' @export
 ntspreg <- function(lmobj,wm) {
 

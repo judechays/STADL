@@ -12,9 +12,19 @@
 #' @return The output will be a matrix.
 #' @example
 #' results <- make_ntspmat(ols, country_name, year, 5)
+#' @import dplyr
+#' @importFrom stats na.omit
+#' @importFrom sf as_Spatial
+#' @importFrom Matrix bdiag
+#' @importFrom lubridate year
+#' @import cshapes
+#' @import stargazer
 #' @export
 make_ntspmat <- function(lmobj,ci,yi,k) {
-
+  
+  # defining global variables
+  CNTRY_NAME <- COWSYEAR <- NULL
+   
   # Identify and subset the sample (df) from the regression, using the estimated disturbances.
 
   call <- match.call()
