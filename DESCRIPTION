@@ -1,6 +1,6 @@
 Package: tscsdep
 Type: Package
-Title: Tools for analyzing data with spatial and temporal dependence.
+Title: Tools for analyzing data with spatial and temporal dependence
 Version: 0.1.0
 Author: Jude Hays [aut, cre]
 Authors@R: c(person(given = "Jude",
@@ -18,7 +18,7 @@ Description: This package contains multiple functions that help create
      At present, it can estimate weights matrices of unbalanced data until 
      year 2019. It also provides researchers with tools to estimate a Spatial 
      AutoRegressive (SAR) lag model, error model (SEM), and Spatial Autocorrelation (SAC).
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/judechays/STADL
@@ -28,6 +28,7 @@ Imports:
     dplyr,
     Matrix,
     spdep,
+    sf,
     spatialreg,
     stargazer,
     lubridate,
