@@ -9,7 +9,7 @@
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![R build
-status](https://github.com/judechays/tscsdep/workflows/R-CMD-check/badge.svg)](https://github.com/judechays/tscsdep/actions)
+status](https://github.com/judechays/STADL/workflows/R-CMD-check/badge.svg)](https://github.com/judechays/STADL/actions)
 <!-- badges: end -->
 
 ## Description
