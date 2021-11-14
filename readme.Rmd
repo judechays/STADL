@@ -23,6 +23,12 @@ library(tidyverse)
 
 # The `tscsdep` package
 
+<!-- badges: start -->
+
+[![Project Status: Active – The project has reached a stable, usable state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+<!-- badges: end -->
+
 ## Description
 
 A package to estimate models addressing spatial and temporal dependence as argued by Cook, Hays and Franzese (2021). This package provides the tools for creating geographic spatial weights matrices considering k-nearest neighbors. It also allows to estimate Spatial AutoRegressive (SAR), error (SEM) lag models, and Spatial Autocorrelation model (SAC).
@@ -506,6 +512,10 @@ To cite `tscsdep` in publications, please use:
 citation("tscsdep") 
 ```
 
-## Author
+## Authors
 
-Jude Hays ([jch61\@pitt.edu](mailto:jch61@pitt.edu){.email}) and Valentina González-Rostani ([mag384\@pitt.edu](mailto:mag384@pitt.edu)
+Jude Hays ([jch61\@pitt.edu](mailto:jch61@pitt.edu){.email}) and Valentina González-Rostani ([mag384\@pitt.edu](mailto:mag384@pitt.edu))
+
+### Mantainer 
+
+Jude Hays ([jch61\@pitt.edu](mailto:jch61@pitt.edu){.email})

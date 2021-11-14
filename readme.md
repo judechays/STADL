@@ -3,6 +3,13 @@
 
 # The `tscsdep` package
 
+<!-- badges: start -->
+
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+<!-- badges: end -->
+
 ## Description
 
 A package to estimate models addressing spatial and temporal dependence
@@ -1071,7 +1078,11 @@ citation("tscsdep")
 #>   }
 ```
 
-## Author
+## Authors
 
 Jude Hays (<jch61@pitt.edu>) and Valentina González-Rostani
-(<mag384@pitt.edu>
+(<mag384@pitt.edu>)
+
+### Mantainer
+
+Jude Hays (<jch61@pitt.edu>)
