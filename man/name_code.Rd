@@ -16,3 +16,6 @@ The output will be the country name as it appears in cshapes, start and end date
 \code{name_code} function to get country name in cshapes if you have war code.
 It also provides you start and end date.
 }
+\examples{
+name_code(2)
+}
