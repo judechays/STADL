@@ -5,7 +5,7 @@
 #'
 #' @param gw_code Country Gleditsch and Ward code.
 #' @return The output will be the country name as it appears in cshapes, start and end date of the country in cshapes data.
-#' @example
+#' @examples
 #' name_code(2)
 #' @importFrom cshapes cshp
 #' @export
@@ -22,7 +22,7 @@ name_code <- function(gw_code) {
 #'
 #' @param a it can be anything, or left empty.
 #' @return The output will be a list of all country name in cshapes.
-#' @example
+#' @examples
 #' name_list()
 #' @export
 names_list <- function(a) {
@@ -36,7 +36,7 @@ names_list <- function(a) {
 #'
 #' @param countryname Country name as it appears in cshapes.
 #' @return The output will be the country war code, start and end date of the country in cshapes data.
-#' @example
+#' @examples
 #' name_text("Uruguay")
 #' @export
 name_text <- function(countryname) {
