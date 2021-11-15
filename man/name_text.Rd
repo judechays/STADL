@@ -15,3 +15,6 @@ The output will be the country war code, start and end date of the country in cs
 \description{
 \code{name_text} function to get country war codes, start and ending dates if you have country name.
 }
+\examples{
+name_text("Uruguay")
+}

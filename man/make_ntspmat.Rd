@@ -24,3 +24,6 @@ The output will be a matrix.
 weights matrix for an unbalanced TSCS sample used to
 estimate a linear regression model.
 }
+\examples{
+results <- make_ntspmat(ols, country_name, year, 5)
+}

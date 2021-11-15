@@ -7,7 +7,7 @@
 name_code(gw_code)
 }
 \arguments{
-\item{gw_code}{Country war code (https://correlatesofwar.org/data-sets/cow-country-codes).}
+\item{gw_code}{Country Gleditsch and Ward code.}
 }
 \value{
 The output will be the country name as it appears in cshapes, start and end date of the country in cshapes data.
@@ -15,4 +15,7 @@ The output will be the country name as it appears in cshapes, start and end date
 \description{
 \code{name_code} function to get country name in cshapes if you have war code.
 It also provides you start and end date.
+}
+\examples{
+name_code(2)
 }

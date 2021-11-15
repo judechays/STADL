@@ -15,3 +15,6 @@ The output will be a list of all country name in cshapes.
 \description{
 \code{names_list} this function provides you with the list of all country names in cshapes.
 }
+\examples{
+name_list()
+}

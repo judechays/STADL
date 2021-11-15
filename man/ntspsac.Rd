@@ -19,3 +19,6 @@ The output will be SAR model estimated.
 using the nearest neighbor spatial weights matrix you previously created
 and a linear regression model.
 }
+\examples{
+sac_reex <- ntsperr(ols,wm)
+}
