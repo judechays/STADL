@@ -212,7 +212,7 @@ library(tscsdep)
 
 ```{r}
 library(haven)
-data <- read_dta("C:/Users/14128/OneDrive - University of Pittsburgh/5th semester/Other projects/Stadlup/tscsdep/vignettes/AEJApp_2011-0102_Stata-data-file.dta")
+data <- read_dta("AEJApp_2011-0102_Stata-data-file.dta")
 
 ```
 
@@ -355,7 +355,7 @@ As we presented in the previous example, we start by creating the weight matrix 
 #### Load data
 
 ```{r, eval=TRUE}
-data<-read.csv("C:/Users/14128/OneDrive - University of Pittsburgh/5th semester/Other projects/Stadlup/tscsdep/vignettes/aer_5year_APSR_full.csv")
+data<-read.csv("aer_5year_APSR_full.csv")
 ```
 
 #### OLS estimation

@@ -178,7 +178,7 @@ period you are analyzing is in `cshapes`, you can check that writing.
 ``` r
 name_text("Uruguay")
 #> [[1]]
-#> [1] "War code"
+#> [1] "Gleditsch and Ward code"
 #> 
 #> [[2]]
 #> [1] 165
@@ -218,7 +218,7 @@ library(tscsdep)
 
 ``` r
 library(haven)
-data <- read_dta("C:/Users/14128/OneDrive - University of Pittsburgh/5th semester/Other projects/Stadlup/tscsdep/vignettes/AEJApp_2011-0102_Stata-data-file.dta")
+data <- read_dta("AEJApp_2011-0102_Stata-data-file.dta")
 ```
 
 #### OLS Estimation
@@ -737,7 +737,7 @@ the SAR, SEM, and SAC models with lagged dependent variable `polity4L`.
 #### Load data
 
 ``` r
-data<-read.csv("C:/Users/14128/OneDrive - University of Pittsburgh/5th semester/Other projects/Stadlup/tscsdep/vignettes/aer_5year_APSR_full.csv")
+data<-read.csv("aer_5year_APSR_full.csv")
 ```
 
 #### OLS estimation
