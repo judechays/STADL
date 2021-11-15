@@ -10,7 +10,7 @@
 #' @param k A value that determines the number of nearest
 #' neighbors.
 #' @return The output will be a matrix.
-#' @example
+#' @examples
 #' results <- make_ntspmat(ols, country_name, year, 5)
 #' @import dplyr
 #' @importFrom stats na.omit
@@ -21,10 +21,10 @@
 #' @import stargazer
 #' @export
 make_ntspmat <- function(lmobj,ci,yi,k) {
-  
+
   # defining global variables
   CNTRY_NAME <- COWSYEAR <- NULL
-   
+
   # Identify and subset the sample (df) from the regression, using the estimated disturbances.
 
   call <- match.call()
@@ -35,11 +35,10 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
   # Collect Information about the sample: (country names: c), (years: y), and (max number of time period: yl)
 
 
-  attach(df)
-  c<-unique(ci)
-  y<-sort(as.factor(unique(yi)),decreasing=FALSE)
+  c<-with(df,unique(eval(parse(text = noquote(paste(call$ci))))))
+  y<-with(df,sort(unique(eval(parse(text = noquote(paste(call$yi))))),decreasing=FALSE))
   yl<-length(y)
-  detach(df)
+
 
 
   # Identify start year for each country in the sample (start_dta)
@@ -141,7 +140,7 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
 
   # Create a Distance Matrix for the first year in the user's dataset.
 
-  dmat <- suppressWarnings(as.data.frame(distmatrix(as.Date(y[1],"%Y"), type="capdist", useGW=F, dependencies = TRUE, keep=1)))
+  dmat <- suppressWarnings(as.data.frame(distmatrix(as.Date(as.character.Date(y[1]),"%Y"), type="capdist", useGW=F, dependencies = TRUE, keep=1)))
 
   # Create first block diagonal of the NT x NT weights matrix. Collect the cross-section of countries (by COWCODE) present in the first year of the user's dataset. Create a distance matrix.
 
@@ -248,7 +247,7 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
 
   for (i in 2:yl) {
 
-    dmat <- suppressWarnings(as.data.frame(distmatrix(as.Date(y[i],"%Y"), type="capdist", useGW=F, dependencies = TRUE, keep=1)))
+    dmat <- suppressWarnings(as.data.frame(distmatrix(as.Date(as.character.Date(y[i]),"%Y"), type="capdist", useGW=F, dependencies = TRUE, keep=1)))
     #  dta <-df.m[which(df.m$year==as.numeric(as.character(y[i]))), ]
     dta <-df.m[which(eval(parse(text=noquote(paste("df.m$",call$yi,sep=""))))==as.numeric(as.character(y[i]))), ]
     #These are less than ideal workarounds for illustrations. Country names stay the same, but cowcodes change in 1992.
