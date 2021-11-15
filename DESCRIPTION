@@ -15,9 +15,10 @@ Authors@R: c(person(given = "Jude",
 Maintainer: Jude Hays <jch61@pitt.edu>
 Description: This package contains multiple functions that help create  
      geographic spatial weights matrices and estimate spatial lag models. 
-     At present, it can estimate weights matrices of unbalanced data until 
-     year 2019. It also provides researchers with tools to estimate a Spatial 
-     AutoRegressive (SAR) lag model, error model (SEM), and Spatial Autocorrelation (SAC).
+     At present, it can estimate weights matrices of unbalanced data up until 
+     the year 2019. It also provides researchers with an easy to use wrapper
+     for estimating Spatial AutoRegressive (SAR) lag models, error models (SEM), 
+     and Spatial Autocorrelation models (SAC).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
