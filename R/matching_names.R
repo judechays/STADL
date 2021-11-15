@@ -3,17 +3,17 @@
 #' \code{name_code} function to get country name in cshapes if you have war code.
 #' It also provides you start and end date.
 #'
-#' @param warcode Country war code (https://correlatesofwar.org/data-sets/cow-country-codes).
+#' @param gw_code Country war code (https://correlatesofwar.org/data-sets/cow-country-codes).
 #' @return The output will be the country name as it appears in cshapes, start and end date of the country in cshapes data.
 #' @example
 #' name_code(2)
 #' @importFrom cshapes cshp
 #' @export
-name_code <- function(warcode) {
+name_code <- function(gw_code) {
   cs2<-cshp(date = NA, useGW = TRUE, dependencies = FALSE)
-  namecountry<- unique(cs2$country_name[cs2$gwcode==warcode])
-  startcountry<- unique(cs2$start[cs2$gwcode==warcode])
-  endcountry<- unique(cs2$end[cs2$gwcode==warcode])
+  namecountry<- unique(cs2$country_name[cs2$gwcode==gw_code])
+  startcountry<- unique(cs2$start[cs2$gwcode==gw_code])
+  endcountry<- unique(cs2$end[cs2$gwcode==gw_code])
   return(list(namecountry, "Start date", startcountry, "End date", endcountry))
 }
 #' Matching your data with cshapes - list of country names.
