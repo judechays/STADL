@@ -150,7 +150,7 @@ One of the challenges when creating the weight matrix is to match the country na
 +=====================================+===================================================================================================================+================+==========================+
 | Country name list                   | List of all country names in `cshapes`                                                                            |                | `names_list()`                |
 +-------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------+--------------------------+
-| Country information: `warcode`      | Provides country information in `cshapes` if you know `gwcode`. It gives: country name, start date, and end date. | `warcode`      | `name_code(warcode)`     |
+| Country information: `gw_code`      | Provides country information in `cshapes` if you know `gwcode`. It gives: country name, start date, and end date. | `gw_code`      | `name_code(gw_code)`     |
 +-------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------+--------------------------+
 | Country information: `country_name` | Provides country information in `cshapes` if you know `country_name`. It gives: gwcode, start date, and end date. | `country_name` | `name_text("Country name")` |
 +-------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------+--------------------------+
@@ -177,7 +177,7 @@ You will see a list with all country names which looks like this:
 
 ##### Looking at specific countries and starting/ending date in `cshapes` if you have countries' war codes
 
-Imagine, you have the US in your data with the `warcode==2` then you can check which is the `country_name` in `cshapes`. 
+Imagine, you have the US in your data with the `gw_code==2` then you can check which is the `country_name` in `cshapes`. 
 
 ```{r}
 name_code(2)
@@ -212,7 +212,7 @@ library(tscsdep)
 
 ```{r}
 library(haven)
-data <- read_dta("AEJApp_2011-0102_Stata-data-file.dta")
+data <- read_dta("C:/Users/14128/OneDrive - University of Pittsburgh/5th semester/Other projects/Stadlup/tscsdep/vignettes/AEJApp_2011-0102_Stata-data-file.dta")
 
 ```
 
@@ -227,7 +227,7 @@ reg<- lm(any_prio_mss ~ gpcp_g + gpcp_g_l +as.factor(year)+as.factor(ccode), dat
 
 Once we estimated our OLS model we can run the \texttt{make_ntspmat} function, which will create a nearest neighbor spatial weights matrix if all countries and time period match.
 
-We start by assuming the country names in the Miguel and Satyanath (2011) dataset match  country names from `cshapes`. Unfortunately, the dataset does not match perfectly with the names, therefore we read the error *"Error in make_ntspmat(reg, country_name, year, 2): Some of your Country-Years are not Matched"* In particular, in this data there are 7 countries which names do not match. We can overcome this problem by re-naming these few countries. For example "Ivory Coast" should be "Cote D'Ivoire". The country names of `cshapes` are available if you run `names_list()`, and you can also check start and end date using `name_text("Country Name")` and `name_code(warcode)`.
+We start by assuming the country names in the Miguel and Satyanath (2011) dataset match  country names from `cshapes`. Unfortunately, the dataset does not match perfectly with the names, therefore we read the error *"Error in make_ntspmat(reg, country_name, year, 2): Some of your Country-Years are not Matched"* In particular, in this data there are 7 countries which names do not match. We can overcome this problem by re-naming these few countries. For example "Ivory Coast" should be "Cote D'Ivoire". The country names of `cshapes` are available if you run `names_list()`, and you can also check start and end date using `name_text("Country Name")` and `name_code(gw_code)`.
 
 ```{r, eval=FALSE}
 wm <- make_ntspmat(reg,country_name,year,2)
@@ -355,7 +355,7 @@ As we presented in the previous example, we start by creating the weight matrix 
 #### Load data
 
 ```{r, eval=TRUE}
-data<-read.csv("aer_5year_APSR_full.csv")
+data<-read.csv("C:/Users/14128/OneDrive - University of Pittsburgh/5th semester/Other projects/Stadlup/tscsdep/vignettes/aer_5year_APSR_full.csv")
 ```
 
 #### OLS estimation
