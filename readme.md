@@ -849,8 +849,7 @@ wm <- make_ntspmat(reg,country,year,10)
 
 ##### SAR `ntspreg`
 
-SAR rejects the null for *ρ* at 95% of confidence, suggesting spatial
-interdependence.
+SAR rejects the null hypothesis for *ρ*=0 at 95% confidence, suggesting spatial interdependence.
 
 ``` r
 lag <- ntspreg(reg,wm)
@@ -894,7 +893,7 @@ summary(lag)
 
 ##### SEM `ntsperr`
 
-SEM does not reject the null for *λ*, suggesting there may not be
+SEM does not reject the null for *λ*=0, suggesting there may not be
 clustering in the unobservables.
 
 ``` r
