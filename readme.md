@@ -893,8 +893,7 @@ summary(lag)
 
 ##### SEM `ntsperr`
 
-SEM does not reject the null for *λ*=0, suggesting there may not be
-clustering in the unobservables.
+The Wald test from the SEM fails to reject the null hypothesis for *λ*=0, suggesting there may not be clustering in the unobservables.
 
 ``` r
 lag_err <- ntsperr(reg,wm)
