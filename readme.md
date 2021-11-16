@@ -540,7 +540,7 @@ summary(sdem_reex)
 
 We can also compare the previous models with a SAC specification using the wrapper function `ntspsac`, which returns a list of output using the function `sacsarlm` from the `spatialreg` package.
 
-With the SAC model we can see that we reject the null hypothesis for λ=0 with 95% confidence, and the null for  ρ=0 with 99% confidence ->  **clustering in the disturbances by allowing them to follow a spatial AR process**.
+With the SAC model we can see that we reject the null hypothesis for λ=0 with 95% confidence, and the null for  ρ=0 with 99% confidence ->  **outcome interdependence and clustering in unobservables**.
 
 
 ``` r
