@@ -134,7 +134,7 @@ You will see a list with all country names which looks like this:
 
 #### Looking at specific countries and starting/ending dates in `cshapes` if you have countries' Correlates of War codes
 
-Imagine, you have the US in your data with the `gw_code==2` then you can check which is the `country_name` in `cshapes`. 
+Imagine, you have the US in your data with the `cow_code==2` then you can check which is the `country_name` in `cshapes`. 
 
 ``` r
 name_code(2)
