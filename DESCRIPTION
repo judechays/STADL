@@ -10,9 +10,9 @@ Authors@R: c(person(given = "Jude",
              person(given = "Valentina",
                   family = "González-Rostani",
                   email = "mag384@pitt.edu",
-                  role = c("aut"))
+                   role = c("aut", "cre"))
                   )
-Maintainer: Jude Hays <jch61@pitt.edu>
+Maintainer: Jude Hays <jch61@pitt.edu> and Valentina González-Rostani <mag384@pitt.edu>
 Description: This package contains multiple functions that help create  
      geographic spatial weights matrices and estimate spatial lag models. 
      At present, it can estimate weights matrices of unbalanced data up until 
