@@ -20,5 +20,7 @@ using the nearest neighbor spatial weights matrix you previously created
 and a linear regression model.
 }
 \examples{
+\dontrun{
 sac_reex <- ntsperr(ols,wm)
+}
 }
