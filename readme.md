@@ -1008,13 +1008,14 @@ citation("tscsdep")
 #> 
 #> To cite the package 'tscsdep' in publications use:
 #> 
-#>   Jude Hays and Valentina González-Rostani (NA). tscsdep: Tools for analyzing country-year time-series-cross-sectional data with spatial and temporal dependence. R package
+#>   Jude Hays and Valentina González-Rostani (2021). tscsdep: Tools for analyzing country-year time-series-cross-sectional data with spatial and temporal dependence. R package
 #>   version 0.1.0. https://github.com/judechays/STADL
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {tscsdep: Tools for analyzing country-year time-series-cross-sectional data with spatial and temporal dependence.},
+#>     year = {2021},
 #>     author = {Jude Hays and Valentina González-Rostani},
 #>     note = {R package version 0.1.0},
 #>     url = {https://github.com/judechays/STADL},
