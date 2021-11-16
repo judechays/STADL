@@ -637,9 +637,8 @@ summary(sac_reex)
 
 ##### Interpretation and diagnostic
 
-You can run different models, compare the BIC of each one of them, and
-whether there are indications of interdependence and clustering in the
-unobservables.
+In addition to Wald and Likelihood Ratio specification tests, you can compare the BIC scores for evidence of interdependence and (or) clustering in the unobservables.
+
 
 ``` r
 BIC(sar_reex)
