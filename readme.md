@@ -113,9 +113,8 @@ One of the challenges when creating the weight matrix is to match the country na
 | Country information: `gw_code`      | Provides country information in `cshapes` if you know `gwcode`. It gives: country name, start date, and end date. | `gw_code`      | `name_code(gw_code)`        |
 | Country information: `country_name` | Provides country information in `cshapes` if you know `country_name`. It gives: gwcode, start date, and end date. | `country_name` | `name_text("Country name")` |
 
-If you run the code for creating the weight matrix and you receive a
-message saying that *Some of your Country-Years are not Matched* you can
-explore `cshapes` to fix the problems as follow.
+If you run the code for creating the weight matrix and you receive a message saying that *Some of your Country-Years are not Matched* you can explore `cshapes` to fix the problems as follows. 
+
 
 ##### List of all country names in `cshapes`
 
