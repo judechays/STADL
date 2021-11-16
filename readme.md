@@ -537,14 +537,10 @@ summary(sdem_reex)
 
 ##### SAC `ntspsac`
 
-We can also compare the previous models with a SAC specification using
-the function `ntspsac`, which returns a list of output from the function
-`sacsarlm` from the `spatialreg` package.
+We can also compare the previous models with a SAC specification using the wrapper function $\texttt{ntspsac}$, which returns a list of output using the function $\texttt{sacsarlm}$ from the `spatialreg` package.
 
-With the SAC model we can see that we reject the null for *λ* with 95%
-of confidence, and the null for *ρ* with 99% of confidence →
-**clustering in the disturbances by allowing them to follow a spatial AR
-process**.
+With the SAC model we can see that we reject the null hypothesis for $\lambda=0$ with 95% confidence, and the null for  $\rho=0$ with 99% confidence $\rightarrow$  **clustering in the disturbances by allowing them to follow a spatial AR process**.
+
 
 ``` r
 sac_reex <- ntspsac(reg,wm)
