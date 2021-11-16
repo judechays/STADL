@@ -347,12 +347,9 @@ wm <- make_ntspmat(reg,country_name,year,2)
 
 ##### SAR `ntspreg`
 
-Now, we are ready to run the function `ntspreg`, which returns a list of
-output from the function `lagsarlm` from the `spatialreg` package. This
-model only accounts for spatial dependence in the data.
+Now, we are ready to run the wrapper function $\texttt{ntspreg}$, which returns a list of output using the function $\texttt{lagsarlm}$ from the `spatialreg` package. This model only accounts for spatial dependence in the data.
 
-With the SAR model we can see that we reject the null for *ρ* with 99%
-of confidence → **spatial interdependence**.
+With the SAR model we can see that we reject the null hypothesis that $\rho=0$ with 99% confidence $\rightarrow$ **spatial interdependence**.
 
 ``` r
 sar_reex <- ntspreg(reg,wm) 
