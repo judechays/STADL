@@ -63,13 +63,12 @@ where *ols* again refers to the object associated with the outcome of a regressi
 
 ### **Spatial error model (SEM)**
 
-``` r
+```{r, eval=F}
 ntsperr(ols, W) 
 ```
 
-where *ols* again refers to the object associated with the outcome of a
-regression (`lm(formula = y ~ x, data = data)`), and *W* is the weight
-matrix created using the `make_ntspmat` function.
+where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and $W$ is the weight matrix created using the `make_ntspmat` function.
+
 
 ### **Spatial Autocorrelation (SAC)**
 
