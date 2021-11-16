@@ -47,7 +47,7 @@ The syntax for calculating the weight matrix is:
 W<-make_ntspmat(lmobj = ols, ci = country_name, yi = year, k=4)
 ```
 
-where *ols* refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`). *country_name* is the name of the variable that contains the sample countries. *year* is the name of the variable that contains the sample years. Finally, $k$ refers to the number of nearest neighbors used to create the spatial weight matrix.
+where *ols* refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`). *country_name* is the name of the variable that contains the sample countries. *year* is the name of the variable that contains the sample years. Finally, `k` refers to the number of nearest neighbors used to create the spatial weight matrix.
 
 
 ### **Spatial AutoRegressive (SAR)**
@@ -58,7 +58,7 @@ The package also provides a convenient wrapper to estimate the SAR model using t
 ntspreg(ols, W) 
 ```
 
-where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and $W$ is the weight matrix created using the `make_ntspmat` function.
+where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and `W` is the weight matrix created using the `make_ntspmat` function.
 
 
 ### **Spatial error model (SEM)**
@@ -67,7 +67,7 @@ where *ols* again refers to the object associated with the outcome of a regressi
 ntsperr(ols, W) 
 ```
 
-where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and $W$ is the weight matrix created using the `make_ntspmat` function.
+where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and `W` is the weight matrix created using the `make_ntspmat` function.
 
 
 ### **Spatial Autocorrelation (SAC)**
@@ -76,7 +76,7 @@ where *ols* again refers to the object associated with the outcome of a regressi
 ntspsac(ols, W) 
 ```
 
-where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and $W$ is the weight matrix created using the `make_ntspmat` function.
+where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and `W` is the weight matrix created using the `make_ntspmat` function.
 
 
 ### Parameters, Functions and Outputs
