@@ -849,7 +849,7 @@ wm <- make_ntspmat(reg,country,year,10)
 
 ##### SAR `ntspreg`
 
-SAR rejects the null hypothesis for *ρ*=0 at 95% confidence, suggesting spatial interdependence.
+The Wald test from the SAR model rejects the null hypothesis for *ρ*=0 at 95% confidence, suggesting spatial interdependence.
 
 ``` r
 lag <- ntspreg(reg,wm)
