@@ -104,10 +104,8 @@ where *ols* again refers to the object associated with the outcome of a regressi
 
 ### Tools for merging your data with `cshapes`
 
-One of the challenges when creating the weight matrix is to match the
-country names from your data to the ones in `cshapes` therefore we
-provide some functions to make it easier these recoding process. Later
-we show the recoding with an example.
+One of the challenges when creating the weight matrix is to match the country names from your data to the ones in `cshapes`. Therefore we describe below some functions to make the recoding process easier. Later we show how to do the recoding with an example. 
+
 
 | Object                              | Description                                                                                                       | Input          | Function                    |
 |-------------------------------------|-------------------------------------------------------------------------------------------------------------------|----------------|-----------------------------|
