@@ -30,8 +30,7 @@ It can be installed using `devtools`
 
 ## Functions
 
-At present, it can create a weight matrix for all countries until year
-2019. Maps come from `cshapes` package.
+At present, it can create a weight matrix for all countries up until the year 2019. Maps come from the `cshapes` package.
 
 |            Object             |          Method          |            Variables            |               Function                |
 |:-----------------------------:|:------------------------:|:-------------------------------:|:-------------------------------------:|
