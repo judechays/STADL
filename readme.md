@@ -84,9 +84,9 @@ where *ols* again refers to the object associated with the outcome of a regressi
 -   <p style="color:#808080">
     Inputs parameters (grey)
     <p>
-    The functions have four parameters as inputs: country names *ci*,
-    years *yi*, number of neighbors *k*, and linear regression model
-    *lmobj*.
+    The functions have four parameters as inputs: country names `ci`,
+    years `yi`, number of neighbors `k`, and linear regression model
+    `lmobj`.
 
 -   <p style="color: #00bfff">
     Functions (blue)
