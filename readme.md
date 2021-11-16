@@ -443,12 +443,9 @@ summary(sar_reex)
 
 ##### SEM `ntsperr`
 
-We can also compare the estimated SAR model with an Error model using
-the function `ntsperr`, which returns a list of output from the function
-`errorsarlm` from the `spatialreg` package.
+We can also compare the estimated SAR model with a Spatial Error Model using the wrapper function $\texttt{ntsperr}$, which returns a list of output using the function $\texttt{errorsarlm}$ from the `spatialreg` package.
 
-With the error model we can see that we reject the null for *λ* with 99%
-of confidence → **clustering in the unobservables**
+With the error model we can see that we reject the null for $\lambda=0$ with 99% confidence $\rightarrow$ **clustering in the unobservables** 
 
 ``` r
 sdem_reex <- ntsperr(reg,wm)
