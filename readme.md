@@ -82,22 +82,19 @@ where *ols* again refers to the object associated with the outcome of a regressi
 
 ### Parameters, Functions and Outputs
 
--   <p style="color:#808080">
-    Inputs parameters (grey)
-    <p>
+-   Inputs parameters (grey)
+    
     The functions have four parameters as inputs: country names `ci`,
     years `yi`, number of neighbors `k`, and linear regression model
     `lmobj`.
 
--   <p style="color: #00bfff">
-    Functions (blue)
-    <p>
+-   Functions (blue)
+    
     The functions are four. They take as inputs the parameters, and have
     some outputs.
 
--   <p style="color: #ff6600">
-    Outputs (orange)
-    </p>
+-   Outputs (orange)
+    
     Each function has an output. For example, `make_ntspmat()` function
     generates as as output the *weight matrix*.
 
