@@ -232,7 +232,7 @@ wm <- make_ntspmat(reg,country_name,year,2)
     7           Zimbabwe                1981                                      
     ------------------------------------------------------------------------------
 
-The following code re-name the countries that did not match.
+The following code re-names the countries that did not match.
 
 ``` r
 library (DataCombine)
@@ -246,13 +246,8 @@ data$country_name<-recode_factor(data$country_name,"Zaire"="Congo, Democratic Re
 data$country_name<-recode_factor(data$country_name,"Zimbabwe"="Zimbabwe (Rhodesia)")
 ```
 
-Once we corrected the dataset we can run again our estimated regression,
-and the weight matrix function. While the function is working we will
-see the year in which the function is working, and the country-code
-numbers. If the weight matrix stop before the time period you will be
-able to recognize which years worked well and when there is an error.
-When all of the countries are matched you will see after the year a
-message saying *All of your Countries are Matched.*
+Once we have corrected the country names in the dataset, we can re-run the regression and weight matrix function. While the function is working we will see the year in which the function is working, and the country-code numbers. If the weights matrix function stops before the getting to the end year, you will be able to recognize which cross-section (indexed by year) contains an error (or errors). When all of the countries are matched you will see after the year a message saying *All of your Countries are Matched.*
+
 
 ``` r
 reg<- lm(any_prio_mss ~ gpcp_g + gpcp_g_l +as.factor(year)+as.factor(ccode), data=data)
