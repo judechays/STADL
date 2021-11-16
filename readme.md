@@ -664,7 +664,7 @@ logLik(sac_reex)
 
 #### What is next?
 
-You can repeat the process using a different number of *k* neighbors.
+You can repeat the process using a different number of `k` neighbors.
 
 ``` r
 reg<- lm(any_prio_mss ~ gpcp_g + gpcp_g_l +as.factor(year)+as.factor(ccode), data=data)
@@ -676,19 +676,12 @@ wm <- make_ntspmat(reg,country_name,year,10)
 
 ### Income and Democracy (Acemoglu, et al 2008)
 
-The data used to estimate the following examples come from Acemoglu, D.,
-Johnson, S., Robinson, J. A. & Yared, P. (2008), “Income and democracy”,
-American Economic Review 98(3), 808–42. The Acemoglu, et al. (2008)
-dataset contains data on countries’ GDP, and democracy (Polity IV score)
-for the period 1960–2000 (every 5 years).
+The data used to estimate the following examples come from Acemoglu, D., Johnson, S., Robinson, J. A. & Yared, P. (2008), "Income and democracy", American Economic Review 98(3), 808–42. The Acemoglu, et al. (2008) dataset contains data on countries' GDP, and democracy (Polity IV score) for the period 1960–2000 (every 5 years).
 
-The dependent variable, democracy (`polity4`) is the Freedom House
-Political Rights Index. The main independent variable, is GDP per capita
-(in PPP) `lrgdpchL`.
+The dependent variable, democracy (`polity4`) is Polity IV score. The main independent variable, is GDP per capita (in PPP) `lrgdpchL`. 
 
-As we presented in the previous example, we start by creating the weight
-matrix after matching country names, then we estimate the results for
-the SAR, SEM, and SAC models with lagged dependent variable `polity4L`.
+As previously, we start by creating the weight matrix after matching country name. Then we estimate results for the SAR, SEM, and SAC models with a lagged dependent variable `polity4L`. 
+
 
 #### Load data
 
