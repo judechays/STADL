@@ -52,16 +52,14 @@ where *ols* refers to the object associated with the outcome of a regression (`l
 
 ### **Spatial AutoRegressive (SAR)**
 
-The package also allows to create a SAR model using the weight matrix
-and lag variables.
+The package also provides a convenient wrapper to estimate the SAR model using the weight matrix.
 
-``` r
+```{r, eval=F}
 ntspreg(ols, W) 
 ```
 
-where *ols* again refers to the object associated with the outcome of a
-regression (`lm(formula = y ~ x, data = data)`), and *W* is the weight
-matrix created using the `make_ntspmat` function.
+where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and $W$ is the weight matrix created using the `make_ntspmat` function.
+
 
 ### **Spatial error model (SEM)**
 
