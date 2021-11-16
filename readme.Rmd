@@ -31,6 +31,528 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 ## Description
 
+A package to estimate models addressing spatial and temporal dependence as argued by Cook, Hays and Franzese (2021). This package provides the tools for creating geographic spatial weights matrices considering k-nearest neighbors. It also allows to estimate Spatial AutoRegressive (SAR), error (SEM) lag models, and Spatial Autocorrelation model (SAC).
+
+The `tscsdep` package aims to provide researchers tools for analyzing data with spatial and temporal dependence. It helps to specify spatio-temporal models, and to diagnostic which model is best suited.
+
+## Installation
+
+It can be installed using `devtools`
+
+    # The development version from GitHub:
+
+    library(devtools); devtools::install_github("judechays/STADL", dependencies = TRUE)
+
+## Functions
+
+At present, it can create a weight matrix for all countries until year 2019. Maps come from `cshapes` package.
+
+
++-------------------------------+--------------------------+---------------------------------+---------------------------------------+
+| Object                        | Method                   | Variables                       | Function                              |
++:=============================:+:========================:+:===============================:+:=====================================:+
+| Weight Matrix                 | k-nearest neighbor       | `ols` `country_name` `year` `k` | `make_ntspmat_ch(lmobj, ci, yi, k=4)` |
++-------------------------------+--------------------------+---------------------------------+---------------------------------------+
+| Spatial AutoRegressive (SAR)  | `spatialreg::lagsarlm`   | `ols` `W`                       | `ntspreg(ols, W)`                     |
++-------------------------------+--------------------------+---------------------------------+---------------------------------------+
+| Spatial error model (SEM)     | `spatialreg::errorsarlm` | `ols` `W`                       | `ntsperr(ols, W)`                     |
++-------------------------------+--------------------------+---------------------------------+---------------------------------------+
+| Spatial Autocorrelation (SAC) | `spatialreg::sacsarlm`   | `ols` `W`                       | `ntspsac(ols, W)`                     |
++-------------------------------+--------------------------+---------------------------------+---------------------------------------+
+
+
+
+### **Weight Matrix**
+
+This model's syntax for calculating the weight matrix is:
+
+```{r, eval=F}
+W<-make_ntspmat(lmobj = ols, ci = country_name, yi = year, k=4)
+```
+
+where *ols* refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`). *country_name* will be the name of the variable that contains countries, and the same regarding *year*. Finally, $k$ refers to the number of nearest neighbors you want to use to calculate the weight matrix.
+
+### **Spatial AutoRegressive (SAR)**
+
+The package also allows to create a SAR model using the weight matrix and lag variables.
+
+```{r, eval=F}
+ntspreg(ols, W) 
+```
+
+where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and $W$ is the weight matrix created using the `make_ntspmat` function.
+
+### **Spatial error model (SEM)**
+
+```{r, eval=F}
+ntsperr(ols, W) 
+```
+
+where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and $W$ is the weight matrix created using the `make_ntspmat` function.
+
+
+### **Spatial Autocorrelation (SAC)**
+
+```{r, eval=F}
+ntspsac(ols, W) 
+```
+
+where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and $W$ is the weight matrix created using the `make_ntspmat` function.
+
+
+### Parameters, Functions and Outputs
+
+* <p style="color:#808080">Inputs parameters (grey)<p>The functions have four parameters as inputs: country names *ci*, years *yi*, number of neighbors *k*, and linear regression model *lmobj*. 
+* <p style="color: #00bfff">Functions (blue)<p> The functions are four. They take as inputs the parameters, and have some outputs. 
+* <p style="color: #ff6600"> Outputs (orange)</p>Each function has an output. For example, *make_ntspmat()* function generates as as output the *weight matrix*.
+
+```{r, echo = FALSE, message = FALSE, warning=FALSE, eval=FALSE}
+library(dagitty)
+library(ggdag)
+library(ggplot2)
+
+
+
+
+simple_dag <- dagify(
+  FW ~ lmobj + ci + yi + k,
+  FSAC ~ WM + lmobj,
+  FSAR ~ WM + lmobj,
+  FSEM ~ WM + lmobj,
+  SAC ~ FSAC,
+  SAR ~ FSAR,
+  SEM ~ FSEM,
+  WM ~ FW,
+  exposure = c("WM","SAR","SEM", "SAC"),
+  outcome = c("FSAC", "FSAR","FSEM","FW"),
+  labels = c(FSAC = "ntspsac()", FSAR = "ntspreg()", FSEM = "ntsperr()", FW = "make_ntspmat()"),
+    coords = list(x = c(x = 1, a = 2, b = 2, y = 3),
+                y = c(x = 2, a = 1, b = 3, y = 2))
+)
+
+
+
+
+ggdag_status(simple_dag, 
+             use_labels = "label", size=2, color="black") +
+  guides(fill = FALSE, color = FALSE) +  
+  theme_dag()
+```
+![](man/Figures/asa.jpg)
+
+
+### Tools for merging your data with `cshapes`
+
+One of the challenges when creating the weight matrix is to match the country names from your data to the ones in `cshapes` therefore we provide some functions to make it easier these recoding process. Later we show the recoding with an example. 
+
++-------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------+--------------------------+
+| Object                              | Description                                                                                                       | Input          | Function                 |
++=====================================+===================================================================================================================+================+==========================+
+| Country name list                   | List of all country names in `cshapes`                                                                            |                | `names_list()`                |
++-------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------+--------------------------+
+| Country information: `gw_code`      | Provides country information in `cshapes` if you know `gwcode`. It gives: country name, start date, and end date. | `gw_code`      | `name_code(gw_code)`     |
++-------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------+--------------------------+
+| Country information: `country_name` | Provides country information in `cshapes` if you know `country_name`. It gives: gwcode, start date, and end date. | `country_name` | `name_text("Country name")` |
++-------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------+--------------------------+
+
+If you run the code for creating the weight matrix and you receive a message saying that *Some of your Country-Years are not Matched* you can explore `cshapes` to fix the problems as follow. 
+
+##### List of all country names in `cshapes`
+
+```{r, eval=F}
+names_list()
+```
+
+You will see a list with all country names which looks like this: 
+
+```{}
+#>   [1] "United States of America"             
+#>   [2] "Canada"                               
+#>   [3] "Bahamas"                              
+#>   [4] "Cuba"                                 
+#>   [5] "Haiti"                                
+#>   [6] "Dominican Republic"                   
+#>   [7] "Jamaica"                 
+```
+
+##### Looking at specific countries and starting/ending date in `cshapes` if you have countries' war codes
+
+Imagine, you have the US in your data with the `gw_code==2` then you can check which is the `country_name` in `cshapes`. 
+
+```{r}
+name_code(2)
+```
+
+##### Looking at specific countries and starting/ending date in `cshapes` if you have countries' names
+
+Imagine, you have the country names, but you are not sure that the period you are analyzing is in `cshapes`, you can check that writing. 
+
+```{r}
+name_text("Uruguay")
+```
+
+
+## Example 1 
+
+The data used to estimate the following examples come from Miguel, Edward, and Shanker Satyanath. 2011. "Re-examining Economic Shocks and Civil Conflict." American Economic Journal: Applied Economics, 3 (4): 228-32. DOI: 10.1257/app.3.4.228 The Miguel and Satyanath (2011) dataset contains data on rainfall, economic growth, and civil conflict for the period 1981–1999.
+
+
+
+
+
+### Re-examining Economic Shocks and Civil Conflict (Edward Miguel; Shanker Satyanath, 2011)
+
+#### Load data
+
+To begin we read the data, then we run the regression that we will use to create the weight matrix.
+
+```{r, eval=FALSE}
+library(tscsdep)
+```
+
+```{r}
+library(haven)
+data <- read_dta("AEJApp_2011-0102_Stata-data-file.dta")
+
+```
+
+#### OLS Estimation
+
+```{r}
+# Panel C: reduced form
+reg<- lm(any_prio_mss ~ gpcp_g + gpcp_g_l +as.factor(year)+as.factor(ccode), data=data)
+```
+
+#### Create the Weight Matrix: make_ntspmat
+
+Once we estimated our OLS model we can run the \texttt{make_ntspmat} function, which will create a nearest neighbor spatial weights matrix if all countries and time period match.
+
+We start by assuming the country names in the Miguel and Satyanath (2011) dataset match  country names from `cshapes`. Unfortunately, the dataset does not match perfectly with the names, therefore we read the error *"Error in make_ntspmat(reg, country_name, year, 2): Some of your Country-Years are not Matched"* In particular, in this data there are 7 countries which names do not match. We can overcome this problem by re-naming these few countries. For example "Ivory Coast" should be "Cote D'Ivoire". The country names of `cshapes` are available if you run `names_list()`, and you can also check start and end date using `name_text("Country Name")` and `name_code(gw_code)`.
+
+```{r, eval=FALSE}
+wm <- make_ntspmat(reg,country_name,year,2)
+
+```
+
+``` {}
+==============================================================================
+       Data Country Name       Data Start Year COW Country Name COW Start Year
+------------------------------------------------------------------------------
+1         Burkina Faso              1981                                      
+2         Ivory Coast               1981                                      
+3          Madagascar               1981                                      
+4          Swaziland                1981                                      
+5 Tanzania, United Republic of      1981                                      
+6            Zaire                  1981                                      
+7           Zimbabwe                1981                                      
+------------------------------------------------------------------------------
+```
+
+The following code re-name the countries that did not match.
+
+```{r}
+library (DataCombine)
+
+data$country_name<-recode_factor(data$country_name,"Burkina Faso"="Burkina Faso (Upper Volta)")
+data$country_name<-recode_factor(data$country_name,"Ivory Coast"="Cote D'Ivoire")
+data$country_name<-recode_factor(data$country_name,"Madagascar"="Madagascar (Malagasy)")
+data$country_name<-recode_factor(data$country_name,"Swaziland"="Swaziland (Eswatini)")
+data$country_name<-recode_factor(data$country_name,"Tanzania, United Republic of"="Tanzania (Tanganyika)")
+data$country_name<-recode_factor(data$country_name,"Zaire"="Congo, Democratic Republic of (Zaire)")
+data$country_name<-recode_factor(data$country_name,"Zimbabwe"="Zimbabwe (Rhodesia)")
+
+```
+
+Once we corrected the dataset we can run again our estimated regression, and the weight matrix function. While the function is working we will see the year in which the function is working, and the country-code numbers. If the weight matrix stop before the time period you will be able to recognize which years worked well and when there is an error. When all of the countries are matched you will see after the year a message saying *All of your Countries are Matched.*
+
+```{r}
+reg<- lm(any_prio_mss ~ gpcp_g + gpcp_g_l +as.factor(year)+as.factor(ccode), data=data)
+
+wm <- make_ntspmat(reg,country_name,year,2)
+
+```
+
+#### Estimate Spatial Lag Models
+
+`wm` provides the extracted nearest-neighbor weights matrix.
+
+
+##### SAR `ntspreg`
+
+Now, we are ready to run the function $\texttt{ntspreg}$, which returns a list of output from the function $\texttt{lagsarlm}$ from the `spatialreg` package. This model only accounts for spatial dependence in the data.
+
+With the SAR model we can see that we reject the null for $\rho$ with 99% of confidence $\rightarrow$ **spatial interdependence**.
+
+```{r}
+sar_reex <- ntspreg(reg,wm) 
+summary(sar_reex)
+```
+
+##### SEM `ntsperr`
+
+We can also compare the estimated SAR model with an Error model using the function $\texttt{ntsperr}$, which returns a list of output from the function $\texttt{errorsarlm}$ from the `spatialreg` package.
+
+With the error model we can see that we reject the null for $\lambda$ with 99% of confidence $\rightarrow$ **clustering in the unobservables** 
+
+```{r}
+sdem_reex <- ntsperr(reg,wm)
+summary(sdem_reex)
+```
+
+##### SAC `ntspsac`
+
+We can also compare the previous models with a SAC specification using the function $\texttt{ntspsac}$, which returns a list of output from the function $\texttt{sacsarlm}$ from the `spatialreg` package.
+
+With the SAC model we can see that we reject the null for $\lambda$ with 95% of confidence, and the null for  $\rho$ with 99% of confidence $\rightarrow$  **clustering in the disturbances by allowing them to follow a spatial AR process**.
+
+```{r}
+sac_reex <- ntspsac(reg,wm)
+summary(sac_reex)
+```
+
+##### Interpretation and diagnostic
+
+You can run different models, compare the BIC of each one of them, and whether there are indications of interdependence and clustering in the unobservables.
+
+```{r}
+BIC(sar_reex)
+BIC(sdem_reex)
+BIC(sac_reex)
+
+```
+
+In this example the *SAR* model is the one with the lowest BIC.
+
+You can also extract the log-likelihood of each model. 
+
+```{r}
+logLik(sar_reex)
+logLik(sdem_reex)
+logLik(sac_reex)
+```
+#### What is next?
+
+You can repeat the process using a different number of $k$ neighbors. 
+
+```{r, eval=F}
+reg<- lm(any_prio_mss ~ gpcp_g + gpcp_g_l +as.factor(year)+as.factor(ccode), data=data)
+
+wm <- make_ntspmat(reg,country_name,year,10)
+
+```
+
+## Example 2
+
+### Income and Democracy (Acemoglu, et al 2008)
+
+The data used to estimate the following examples come from Acemoglu, D., Johnson, S., Robinson, J. A. & Yared, P. (2008), "Income and democracy", American Economic Review 98(3), 808–42. The Acemoglu, et al. (2008) dataset contains data on countries' GDP, and democracy (Polity IV score) for the period 1960–2000 (every 5 years).
+
+The dependent variable, democracy (`polity4`) is the Freedom House Political Rights Index. The main independent variable, is GDP per capita (in PPP) `lrgdpchL`. 
+
+As we presented in the previous example, we start by creating the weight matrix after matching country names, then we estimate the results for the SAR, SEM, and SAC models with lagged dependent variable `polity4L`. 
+
+
+#### Load data
+
+```{r, eval=TRUE}
+data<-read.csv("aer_5year_APSR_full.csv")
+```
+
+#### OLS estimation
+
+```{r, eval=TRUE}
+reg<-lm(formula = polity4 ~ polity4L + lrgdpchL + as.factor(year), data = data)
+
+```
+
+#### Create the Weight Matrix: `make_ntspmat`
+
+```{r, eval=FALSE}
+wm <- make_ntspmat(reg,country,year,10)
+
+```
+
+Countries that did not match. 
+
+```{}
+=======================================================================
+    Data Country Name   Data Start Year COW Country Name COW Start Year
+-----------------------------------------------------------------------
+1        Belarus             2000                                      
+2      Burkina Faso          1965                                      
+3        Cambodia            2000                                      
+4    Congo, Dem. Rep.        1970                                      
+5      Congo, Rep.           1965                                      
+6     Cote d'Ivoire          1965                                      
+7    Egypt, Arab Rep.        1960                                      
+8   Ethiopia -pre 1993       1960                                      
+9     Ethiopia 1993-         2000                                      
+10     Gambia, The           1970                                      
+11       Germany             1995                                      
+12         Iran              1960                                      
+13        Italy              1960                                      
+14     Korea, Rep.           1960                                      
+15    Macedonia, FYR         2000                                      
+16      Madagascar           1965                                      
+17  Pakistan-post-1972       1980                                      
+18  Pakistan-pre-1972        1960                                      
+19       Romania             1965                                      
+20        Russia             2000                                      
+21      Sri Lanka            1960                                      
+22 Syrian Arab Republic      1970                                      
+23       Tanzania            1970                                      
+24        Turkey             1970                                      
+25    United States          1960                                      
+26    Venezuela, RB          1960                                      
+27       Vietnam             1995                                      
+28        Yemen              2000                                      
+29       Zimbabwe            1975                                      
+-----------------------------------------------------------------------
+```
+
+
+**Fixing country names**
+
+```{r}
+library (DataCombine)
+
+data$country<-recode_factor(data$country,"Korea, Rep."="Korea, Republic of")
+data$country<-recode_factor(data$country,"Egypt, Arab Rep."="Egypt")
+data$country<-recode_factor(data$country,"Gambia, The"="Gambia")
+data$country<-recode_factor(data$country,"Ethiopia 1993-"="Ethiopia")
+data$country<-recode_factor(data$country,"Ethiopia -pre 1993"="Ethiopia")
+data$country<-recode_factor(data$country,"Pakistan-pre-1972"="Pakistan")
+data$country<-recode_factor(data$country,"Pakistan-post-1972"="Pakistan")
+data$country<-recode_factor(data$country,"Belarus"="Belarus (Byelorussia)")
+data$country<-recode_factor(data$country,"Syrian Arab Republic"="Syria")
+data$country<-recode_factor(data$country,"Venezuela, RB"="Venezuela")
+data$country<-recode_factor(data$country,"Vietnam"="Vietnam, Democratic Republic of")
+data$country<-recode_factor(data$country,"Russia"="Russia (Soviet Union)")
+data$country<-recode_factor(data$country,"Yemen"="Yemen (Arab Republic of Yemen)")
+data$country<-recode_factor(data$country,"United States"="United States of America")
+data$country<-recode_factor(data$country,"Tanzania"="Tanzania (Tanganyika)")
+data$country<-recode_factor(data$country,"Burkina Faso"="Burkina Faso (Upper Volta)")
+data$country<-recode_factor(data$country,"Cambodia"="Cambodia (Kampuchea)")
+data$country<-recode_factor(data$country,"Zimbabwe"="Zimbabwe (Rhodesia)")
+data$country<-recode_factor(data$country,"Cote d'Ivoire"="Cote D'Ivoire")
+data$country<-recode_factor(data$country,"Germany"="German Federal Republic")
+data$country<-recode_factor(data$country,"Iran"="Iran (Persia)")
+data$country<-recode_factor(data$country,"Italy"="Italy/Sardinia")
+data$country<-recode_factor(data$country,"Turkey"="Turkey (Ottoman Empire)")
+data$country<-recode_factor(data$country,"Congo, Dem. Rep."="Congo, Democratic Republic of (Zaire)")
+data$country<-recode_factor(data$country,"Congo, Rep."="Congo")
+data$country<-recode_factor(data$country,"Kyrgyzstan"="Kyrgyz Republic")
+data$country<-recode_factor(data$country,"Madagascar"="Madagascar (Malagasy)")
+data$country<-recode_factor(data$country,"Sri Lanka"="Sri Lanka (Ceylon)")
+data$country<-recode_factor(data$country,"Macedonia, FYR"="Macedonia (FYROM/North Macedonia)")
+data$country<-recode_factor(data$country,"Romania"="Rumania")
+```
+
+```{r, eval=TRUE}
+reg<-lm(formula = polity4 ~ polity4L + lrgdpchL + as.factor(year), data = data)
+
+```
+
+```{r}
+wm <- make_ntspmat(reg,country,year,10)
+
+```
+
+#### Estimate Spatial Lag Models
+
+##### SAR `ntspreg`
+
+SAR rejects the null for $\rho$ at 95% of confidence, suggesting spatial interdependence.
+
+```{r}
+lag <- ntspreg(reg,wm)
+summary(lag)
+```
+
+##### SEM `ntsperr`
+
+SEM does not reject the null for $\lambda$, suggesting there may not be clustering in the unobservables.
+
+```{r}
+lag_err <- ntsperr(reg,wm)
+summary(lag_err)
+```
+
+##### SAC `ntspsac`
+
+The SAC model specification  rejects the null for $\rho$ with 95% of confidence, suggesting interdependence, and we do not reject the null for $\lambda$ regarding clustering in unobservables.
+
+```{r}
+lag_sac <- ntspsac(reg,wm)
+summary(lag_sac)
+```
+
+##### Interpretation and diagnostic
+
+```{r}
+BIC(lag)
+BIC(lag_err)
+BIC(lag_sac)
+
+```
+
+ 
+
+```{r}
+logLik(lag)
+logLik(lag_err)
+logLik(lag_sac)
+```
+
+## Citation
+
+To cite `tscsdep` in publications, please use:
+
+```{r, warning=FALSE}
+citation("tscsdep") 
+```
+
+## Authors
+
+Jude Hays ([jch61\@pitt.edu](mailto:jch61@pitt.edu){.email}) and Valentina González-Rostani ([mag384\@pitt.edu](mailto:mag384@pitt.edu))
+
+### Mantainer 
+
+Jude Hays ([jch61\@pitt.edu](mailto:jch61@pitt.edu){.email})
+=======
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+devtools::load_all()
+library(cshapes)
+library(dplyr)
+library(Matrix)
+library(spdep)
+library(spatialreg)
+library(stargazer)
+library(lubridate)
+library(tidyverse)
+
+```
+
+# The `tscsdep` package
+
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/STADL)](https://CRAN.R-project.org/package=tscsdep)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+<!-- badges: end -->
+
+## Description
+
 A package to estimate models addressing spatial and temporal dependence in country-year time-series-cross sectional (TSCS) data as argued by Cook, Hays and Franzese (2021). This package provides the tools for creating geographic spatial weights matrices using k-nearest neighbors. It also provides a convenient wrapper for estimating Spatial AutoRegressive models (SAR), Spatial Error Models (SEM), and Spatial Autocorrelation models (SAC).
 
 The `tscsdep` package aims to provide researchers tools for analyzing country-year TSCS data with spatial and temporal dependence. It helps to diagnose spatial and temporal dependence and specify spatio-temporal models.

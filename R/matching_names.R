@@ -23,7 +23,9 @@ name_code <- function(gw_code) {
 #' @param a it can be anything, or left empty.
 #' @return The output will be a list of all country name in cshapes.
 #' @examples
+
 #' names_list()
+
 #' @export
 names_list <- function(a) {
   cs2<-cshp(date = NA, useGW = TRUE, dependencies = FALSE)

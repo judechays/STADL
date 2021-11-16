@@ -10,7 +10,7 @@
 #' @param k A value that determines the number of nearest
 #' neighbors.
 #' @return The output will be a matrix.
-#' @example
+#' @examples
 #' results <- make_ntspmat(ols, country_name, year, 5)
 #' @import dplyr
 #' @importFrom stats na.omit
