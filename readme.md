@@ -935,9 +935,7 @@ summary(lag_err)
 
 ##### SAC `ntspsac`
 
-The SAC model specification rejects the null for *ρ* with 95% of
-confidence, suggesting interdependence, and we do not reject the null
-for *λ* regarding clustering in unobservables.
+The Wald tests from the SAC model specification reject the null hypothesis for *ρ*=0 with 95% confidence, suggesting interdependence, but fail to reject the null for *λ*=0, suggesting less evidence of spatial clustering in unobservables.
 
 ``` r
 lag_sac <- ntspsac(reg,wm)
@@ -1008,7 +1006,7 @@ To cite `tscsdep` in publications, please use:
 ``` r
 citation("tscsdep") 
 #> 
-#> To cite package 'tscsdep' in publications use:
+#> To cite the package 'tscsdep' in publications use:
 #> 
 #>   Jude Hays and Valentina González-Rostani (NA). tscsdep: Tools for analyzing country-year time-series-cross-sectional data with spatial and temporal dependence. R package
 #>   version 0.1.0. https://github.com/judechays/STADL
