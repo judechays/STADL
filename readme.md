@@ -41,7 +41,7 @@ At present, it can create a weight matrix for all countries up until the year 20
 
 ### **Weight Matrix**
 
-This model's syntax for calculating the weight matrix is:
+The syntax for calculating the weight matrix is:
 
 ```{r, eval=F}
 W<-make_ntspmat(lmobj = ols, ci = country_name, yi = year, k=4)
