@@ -132,10 +132,9 @@ You will see a list with all country names which looks like this:
     #>   [6] "Dominican Republic"                   
     #>   [7] "Jamaica"                 
 
-##### Looking at specific countries and starting/ending date in `cshapes` if you have countries’ war codes
+##### Looking at specific countries and starting/ending dates in `cshapes` if you have countries' Correlates of War codes
 
-Imagine, you have the US in your data with the `gw_code==2` then you can
-check which is the `country_name` in `cshapes`.
+Imagine, you have the US in your data with the `gw_code==2` then you can check which is the `country_name` in `cshapes`. 
 
 ``` r
 name_code(2)
@@ -157,8 +156,7 @@ name_code(2)
 
 ##### Looking at specific countries and starting/ending date in `cshapes` if you have countries’ names
 
-Imagine, you have the country names, but you are not sure that the
-period you are analyzing is in `cshapes`, you can check that writing.
+Imagine you have the country names, but you are not sure that the sample years you are analyzing are in `cshapes`. You can check using  
 
 ``` r
 name_text("Uruguay")
