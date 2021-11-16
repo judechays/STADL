@@ -116,7 +116,7 @@ One of the challenges when creating the weight matrix is to match the country na
 If you run the code for creating the weight matrix and you receive a message saying that *Some of your Country-Years are not Matched* you can explore `cshapes` to fix the problems as follows. 
 
 
-##### List of all country names in `cshapes`
+#### List of all country names in `cshapes`
 
 ``` r
 names_list()
@@ -132,7 +132,7 @@ You will see a list with all country names which looks like this:
     #>   [6] "Dominican Republic"                   
     #>   [7] "Jamaica"                 
 
-##### Looking at specific countries and starting/ending dates in `cshapes` if you have countries' Correlates of War codes
+#### Looking at specific countries and starting/ending dates in `cshapes` if you have countries' Correlates of War codes
 
 Imagine, you have the US in your data with the `gw_code==2` then you can check which is the `country_name` in `cshapes`. 
 
@@ -154,7 +154,7 @@ name_code(2)
 #> [1] "1959-01-02" "1959-08-20" "2019-12-31"
 ```
 
-##### Looking at specific countries and starting/ending date in `cshapes` if you have countries’ names
+#### Looking at specific countries and starting/ending date in `cshapes` if you have countries’ names
 
 Imagine you have the country names, but you are not sure that the sample years you are analyzing are in `cshapes`. You can check using  
 
