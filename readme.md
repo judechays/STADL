@@ -211,20 +211,10 @@ reg<- lm(any_prio_mss ~ gpcp_g + gpcp_g_l +as.factor(year)+as.factor(ccode), dat
 
 #### Create the Weight Matrix: make_ntspmat
 
-Once we estimated our OLS model we can run the function, which will
-create a nearest neighbor spatial weights matrix if all countries and
-time period match.
+Once we have estimated our OLS model, we can run the \texttt{make_ntspmat} function, which will create a k-nearest neighbor spatial weights matrix if all countries and time period match those in `cshapes`.
 
-We start by assuming the country names in the Miguel and Satyanath
-(2011) dataset match country names from `cshapes`. Unfortunately, the
-dataset does not match perfectly with the names, therefore we read the
-error *“Error in make_ntspmat(reg, country_name, year, 2): Some of your
-Country-Years are not Matched”* In particular, in this data there are 7
-countries which names do not match. We can overcome this problem by
-re-naming these few countries. For example “Ivory Coast” should be “Cote
-D’Ivoire”. The country names of `cshapes` are available if you run
-`names_list()`, and you can also check start and end date using
-`name_text("Country Name")` and `name_code(gw_code)`.
+We start by assuming the country names in the Miguel and Satyanath (2011) dataset match the country names from `cshapes`. Unfortunately, the dataset does not match perfectly with the names, therefore we get an error message that says *"Error in make_ntspmat(reg, country_name, year, 2): Some of your Country-Years are not Matched"* In particular, in this dataset there are 7 countries with names that do not match. We can overcome this problem by re-naming these few countries. For example "Ivory Coast" should be "Cote D'Ivoire". The country names of `cshapes` are available if you run `names_list()`, and you can also check the start (entry) and end (exit) dates using `name_text("Country Name")` and `name_code(cow_code)`.
+
 
 ``` r
 wm <- make_ntspmat(reg,country_name,year,2)
