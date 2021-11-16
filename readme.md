@@ -20,6 +20,7 @@ A package to estimate models addressing spatial and temporal dependence in count
 The `tscsdep` package aims to provide researchers tools for analyzing country-year TSCS data with spatial and temporal dependence. It helps to diagnose spatial and temporal dependence and specify spatio-temporal models.
 
 
+
 ## Installation
 
 It can be installed using `devtools`
@@ -211,7 +212,7 @@ reg<- lm(any_prio_mss ~ gpcp_g + gpcp_g_l +as.factor(year)+as.factor(ccode), dat
 
 #### Create the Weight Matrix: make_ntspmat
 
-Once we have estimated our OLS model, we can run the \texttt{make_ntspmat} function, which will create a k-nearest neighbor spatial weights matrix if all countries and time period match those in `cshapes`.
+Once we have estimated our OLS model, we can run the `make_ntspmat` function, which will create a k-nearest neighbor spatial weights matrix if all countries and time period match those in `cshapes`.
 
 We start by assuming the country names in the Miguel and Satyanath (2011) dataset match the country names from `cshapes`. Unfortunately, the dataset does not match perfectly with the names, therefore we get an error message that says *"Error in make_ntspmat(reg, country_name, year, 2): Some of your Country-Years are not Matched"* In particular, in this dataset there are 7 countries with names that do not match. We can overcome this problem by re-naming these few countries. For example "Ivory Coast" should be "Cote D'Ivoire". The country names of `cshapes` are available if you run `names_list()`, and you can also check the start (entry) and end (exit) dates using `name_text("Country Name")` and `name_code(cow_code)`.
 
@@ -349,7 +350,7 @@ wm <- make_ntspmat(reg,country_name,year,2)
 
 Now, we are ready to run the wrapper function `ntspreg`, which returns a list of output using the function `lagsarlm` from the `spatialreg` package. This model only accounts for spatial dependence in the data.
 
-With the SAR model we can see that we reject the null hypothesis that $\rho$=0 with 99% confidence $\rightarrow$ **spatial interdependence**.
+With the SAR model we can see that we reject the null hypothesis that ρ=0 with 99% confidence -> **spatial interdependence**.
 
 ``` r
 sar_reex <- ntspreg(reg,wm) 
@@ -443,9 +444,9 @@ summary(sar_reex)
 
 ##### SEM `ntsperr`
 
-We can also compare the estimated SAR model with a Spatial Error Model using the wrapper function $\texttt{ntsperr}$, which returns a list of output using the function $\texttt{errorsarlm}$ from the `spatialreg` package.
+We can also compare the estimated SAR model with a Spatial Error Model using the wrapper function `ntsperr`, which returns a list of output using the function `errorsarlm` from the `spatialreg` package.
 
-With the error model we can see that we reject the null for $\lambda=0$ with 99% confidence $\rightarrow$ **clustering in the unobservables** 
+With the error model we can see that we reject the null for λ=0 with 99% confidence $\rightarrow$ **clustering in the unobservables** 
 
 ``` r
 sdem_reex <- ntsperr(reg,wm)
@@ -537,9 +538,9 @@ summary(sdem_reex)
 
 ##### SAC `ntspsac`
 
-We can also compare the previous models with a SAC specification using the wrapper function $\texttt{ntspsac}$, which returns a list of output using the function $\texttt{sacsarlm}$ from the `spatialreg` package.
+We can also compare the previous models with a SAC specification using the wrapper function `ntspsac`, which returns a list of output using the function `sacsarlm` from the `spatialreg` package.
 
-With the SAC model we can see that we reject the null hypothesis for $\lambda=0$ with 95% confidence, and the null for  $\rho=0$ with 99% confidence $\rightarrow$  **clustering in the disturbances by allowing them to follow a spatial AR process**.
+With the SAC model we can see that we reject the null hypothesis for λ=0 with 95% confidence, and the null for  ρ=0 with 99% confidence ->  **clustering in the disturbances by allowing them to follow a spatial AR process**.
 
 
 ``` r
