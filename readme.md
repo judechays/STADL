@@ -97,7 +97,7 @@ where *ols* again refers to the object associated with the outcome of a regressi
 -   <p style="color: #ff6600">
     Outputs (orange)
     </p>
-    Each function has an output. For example, *make_ntspmat()* function
+    Each function has an output. For example, `make_ntspmat()` function
     generates as as output the *weight matrix*.
 
 ![](man/Figures/asa.jpg)
@@ -347,9 +347,9 @@ wm <- make_ntspmat(reg,country_name,year,2)
 
 ##### SAR `ntspreg`
 
-Now, we are ready to run the wrapper function $\texttt{ntspreg}$, which returns a list of output using the function $\texttt{lagsarlm}$ from the `spatialreg` package. This model only accounts for spatial dependence in the data.
+Now, we are ready to run the wrapper function `ntspreg`, which returns a list of output using the function `lagsarlm` from the `spatialreg` package. This model only accounts for spatial dependence in the data.
 
-With the SAR model we can see that we reject the null hypothesis that $\rho=0$ with 99% confidence $\rightarrow$ **spatial interdependence**.
+With the SAR model we can see that we reject the null hypothesis that $\rho$=0 with 99% confidence $\rightarrow$ **spatial interdependence**.
 
 ``` r
 sar_reex <- ntspreg(reg,wm) 
