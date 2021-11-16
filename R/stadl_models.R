@@ -8,7 +8,9 @@
 #' @param wm neighbor spatial weight matrix created by the \code{make_ntspmat}.
 #' @return The output will be SAR model estimated.
 #' @examples
+#' \dontrun{
 #' sar_reex <- ntspreg(ols,wm)
+#' }
 #' @import spdep
 #' @export
 ntspreg <- function(lmobj,wm) {
@@ -35,7 +37,9 @@ ntspreg <- function(lmobj,wm) {
 #' @param wm neighbor spatial weight matrix created by the \code{make_ntspmat}.
 #' @return The output will be SAR model estimated.
 #' @examples
+#' \dontrun{
 #' sdem_reex <- ntsperr(ols,wm)
+#' }
 #' @export
 ntsperr <- function(lmobj,wm) {
 
@@ -61,7 +65,9 @@ ntsperr <- function(lmobj,wm) {
 #' @param wm neighbor spatial weight matrix created by the \code{make_ntspmat}.
 #' @return The output will be SAR model estimated.
 #' @examples
+#' \dontrun{
 #' sac_reex <- ntsperr(ols,wm)
+#' }
 #' @export
 ntspsac <- function(lmobj,wm) {
 
