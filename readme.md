@@ -42,17 +42,14 @@ At present, it can create a weight matrix for all countries until year
 
 ### **Weight Matrix**
 
-This model’s syntax for calculating the weight matrix is:
+This model's syntax for calculating the weight matrix is:
 
-``` r
+```{r, eval=F}
 W<-make_ntspmat(lmobj = ols, ci = country_name, yi = year, k=4)
 ```
 
-where *ols* refers to the object associated with the outcome of a
-regression (`lm(formula = y ~ x, data = data)`). *country_name* will be
-the name of the variable that contains countries, and the same regarding
-*year*. Finally, *k* refers to the number of nearest neighbors you want
-to use to calculate the weight matrix.
+where *ols* refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`). *country_name* is the name of the variable that contains the sample countries. *year* is the name of the variable that contains the sample years. Finally, $k$ refers to the number of nearest neighbors used to create the spatial weight matrix.
+
 
 ### **Spatial AutoRegressive (SAR)**
 
