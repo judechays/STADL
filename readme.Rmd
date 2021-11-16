@@ -150,7 +150,7 @@ One of the challenges when creating the weight matrix is to match the country na
 +=====================================+===================================================================================================================+================+==========================+
 | Country name list                   | List of all country names in `cshapes`                                                                            |                | `names_list()`                |
 +-------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------+--------------------------+
-| Country information: `warcode`      | Provides country information in `cshapes` if you know `gwcode`. It gives: country name, start date, and end date. | `warcode`      | `name_code(warcode)`     |
+| Country information: `gw_code`      | Provides country information in `cshapes` if you know `gwcode`. It gives: country name, start date, and end date. | `gw_code`      | `name_code(gw_code)`     |
 +-------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------+--------------------------+
 | Country information: `country_name` | Provides country information in `cshapes` if you know `country_name`. It gives: gwcode, start date, and end date. | `country_name` | `name_text("Country name")` |
 +-------------------------------------+-------------------------------------------------------------------------------------------------------------------+----------------+--------------------------+
@@ -177,7 +177,7 @@ You will see a list with all country names which looks like this:
 
 ##### Looking at specific countries and starting/ending dates in `cshapes` if you have countries' Correlates of War codes
 
-Imagine, you have the US in your data with the `warcode==2` then you can check which is the `country_name` in `cshapes`. 
+Imagine, you have the US in your data with the `gw_code==2` then you can check which is the `country_name` in `cshapes`. 
 
 ```{r}
 name_code(2)
@@ -227,7 +227,7 @@ reg<- lm(any_prio_mss ~ gpcp_g + gpcp_g_l +as.factor(year)+as.factor(ccode), dat
 
 Once we have estimated our OLS model, we can run the \texttt{make_ntspmat} function, which will create a k-nearest neighbor spatial weights matrix if all countries and time period match those in `cshapes`.
 
-We start by assuming the country names in the Miguel and Satyanath (2011) dataset match the country names from `cshapes`. Unfortunately, the dataset does not match perfectly with the names, therefore we get an error message that says *"Error in make_ntspmat(reg, country_name, year, 2): Some of your Country-Years are not Matched"* In particular, in this data there are 7 countries which names do not match. We can overcome this problem by re-naming these few countries. For example "Ivory Coast" should be "Cote D'Ivoire". The country names of `cshapes` are available if you run `names_list()`, and you can also check the start (entry) and end (exit) dates using `name_text("Country Name")` and `name_code(warcode)`.
+We start by assuming the country names in the Miguel and Satyanath (2011) dataset match the country names from `cshapes`. Unfortunately, the dataset does not match perfectly with the names, therefore we get an error message that says *"Error in make_ntspmat(reg, country_name, year, 2): Some of your Country-Years are not Matched"* In particular, in this dataset there are 7 countries with names that do not match. We can overcome this problem by re-naming these few countries. For example "Ivory Coast" should be "Cote D'Ivoire". The country names of `cshapes` are available if you run `names_list()`, and you can also check the start (entry) and end (exit) dates using `name_text("Country Name")` and `name_code(warcode)`.
 
 ```{r, eval=FALSE}
 wm <- make_ntspmat(reg,country_name,year,2)

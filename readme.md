@@ -4,7 +4,9 @@
 # The `tscsdep` package
 
 <!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version/STADL)](https://CRAN.R-project.org/package=tscsdep)
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/STADL)](https://CRAN.R-project.org/package=tscsdep)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -122,7 +124,7 @@ we show the recoding with an example.
 | Object                              | Description                                                                                                       | Input          | Function                    |
 |-------------------------------------|-------------------------------------------------------------------------------------------------------------------|----------------|-----------------------------|
 | Country name list                   | List of all country names in `cshapes`                                                                            |                | `names_list()`              |
-| Country information: `warcode`      | Provides country information in `cshapes` if you know `gwcode`. It gives: country name, start date, and end date. | `warcode`      | `name_code(warcode)`        |
+| Country information: `gw_code`      | Provides country information in `cshapes` if you know `gwcode`. It gives: country name, start date, and end date. | `gw_code`      | `name_code(gw_code)`        |
 | Country information: `country_name` | Provides country information in `cshapes` if you know `country_name`. It gives: gwcode, start date, and end date. | `country_name` | `name_text("Country name")` |
 
 If you run the code for creating the weight matrix and you receive a
@@ -147,7 +149,7 @@ You will see a list with all country names which looks like this:
 
 ##### Looking at specific countries and starting/ending date in `cshapes` if you have countries’ war codes
 
-Imagine, you have the US in your data with the `warcode==2` then you can
+Imagine, you have the US in your data with the `gw_code==2` then you can
 check which is the `country_name` in `cshapes`.
 
 ``` r
@@ -176,7 +178,7 @@ period you are analyzing is in `cshapes`, you can check that writing.
 ``` r
 name_text("Uruguay")
 #> [[1]]
-#> [1] "War code"
+#> [1] "Gleditsch and Ward code"
 #> 
 #> [[2]]
 #> [1] 165
@@ -241,7 +243,7 @@ countries which names do not match. We can overcome this problem by
 re-naming these few countries. For example “Ivory Coast” should be “Cote
 D’Ivoire”. The country names of `cshapes` are available if you run
 `names_list()`, and you can also check start and end date using
-`name_text("Country Name")` and `name_code(warcode)`.
+`name_text("Country Name")` and `name_code(gw_code)`.
 
 ``` r
 wm <- make_ntspmat(reg,country_name,year,2)
