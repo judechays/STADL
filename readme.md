@@ -181,19 +181,17 @@ name_text("Uruguay")
 
 ## Example 1
 
-The data used to estimate the following examples come from Miguel,
-Edward, and Shanker Satyanath. 2011. “Re-examining Economic Shocks and
-Civil Conflict.” American Economic Journal: Applied Economics, 3 (4):
-228-32. DOI: 10.1257/app.3.4.228 The Miguel and Satyanath (2011) dataset
-contains data on rainfall, economic growth, and civil conflict for the
-period 1981–1999.
+The data used to estimate the following examples come from Miguel, Edward, and Shanker Satyanath. 2011. "Re-examining Economic Shocks and Civil Conflict." American Economic Journal: Applied Economics, 3 (4): 228-32. DOI: 10.1257/app.3.4.228 The Miguel and Satyanath (2011) dataset contains data on rainfall, economic growth, and civil conflict for the period 1981–1999.
+
+
+
+
 
 ### Re-examining Economic Shocks and Civil Conflict (Edward Miguel; Shanker Satyanath, 2011)
 
 #### Load data
 
-To begin we read the data, then we run the regression that we will use
-to create the weight matrix.
+To begin, we read the data, and then run the (non-spatial) regression that we will use to create the weight matrix.
 
 ``` r
 library(tscsdep)
