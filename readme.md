@@ -72,13 +72,12 @@ where *ols* again refers to the object associated with the outcome of a regressi
 
 ### **Spatial Autocorrelation (SAC)**
 
-``` r
+```{r, eval=F}
 ntspsac(ols, W) 
 ```
 
-where *ols* again refers to the object associated with the outcome of a
-regression (`lm(formula = y ~ x, data = data)`), and *W* is the weight
-matrix created using the `make_ntspmat` function.
+where *ols* again refers to the object associated with the outcome of a regression (`lm(formula = y ~ x, data = data)`), and $W$ is the weight matrix created using the `make_ntspmat` function.
+
 
 ### Parameters, Functions and Outputs
 
