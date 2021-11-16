@@ -20,5 +20,7 @@ using the nearest neighbor spatial weights matrix you previously created
 and a linear regression model.
 }
 \examples{
+\dontrun{
 sar_reex <- ntspreg(ols,wm)
+}
 }

@@ -25,5 +25,8 @@ weights matrix for an unbalanced TSCS sample used to
 estimate a linear regression model.
 }
 \examples{
+\dontrun{
 results <- make_ntspmat(ols, country_name, year, 5)
+}
+
 }
