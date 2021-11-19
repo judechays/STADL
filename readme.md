@@ -1029,5 +1029,4 @@ Jude Hays (<jch61@pitt.edu>) and Valentina González-Rostani
 
 ### Mantainers
 
-Jude Hays (<jch61@pitt.edu>) and Valentina González-Rostani
-(<mag384@pitt.edu>)
+Jude Hays (<jch61@pitt.edu>)
