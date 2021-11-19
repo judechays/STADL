@@ -10,7 +10,7 @@ Authors@R: c(person(given = "Jude",
              person(given = "Valentina",
                   family = "González-Rostani",
                   email = "mag384@pitt.edu",
-                   role = c("aut", "cre"))
+                   role = c("aut"))
                   )
 Maintainer: Jude Hays <jch61@pitt.edu> and Valentina González-Rostani <mag384@pitt.edu>
 Description: This package contains multiple functions that help create  
