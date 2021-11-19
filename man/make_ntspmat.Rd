@@ -26,7 +26,13 @@ estimate a linear regression model.
 }
 \examples{
 \dontrun{
-results <- make_ntspmat(ols, country_name, year, 5)
+df <- data.frame(
+country = factor(c("United Kingdom","United Kingdom","Ireland","Ireland","Netherlands","Netherlands",
+"Belgium","Belgium","France","France","Spain","Spain")),
+year = c(2018, 2019, 2018, 2019, 2018, 2019, 2018, 2019, 2018, 2019, 2018, 2019),
+y = rnorm(12), x = rnorm(12))
+linmod <- lm(y~x,df)
+w <- make_ntspmat(linmod,country,year,3)
 }
 
 }
