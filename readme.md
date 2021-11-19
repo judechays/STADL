@@ -1027,6 +1027,6 @@ citation("tscsdep")
 Jude Hays (<jch61@pitt.edu>) and Valentina González-Rostani
 (<mag384@pitt.edu>)
 
-### Mantainers
+### Mantainer
 
 Jude Hays (<jch61@pitt.edu>)
