@@ -189,11 +189,7 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
   dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1957 & dta[[noquote(paste(call$yi))]] < 1961 & dta[[noquote(paste(call$ci))]]=="Syria", "651",dta$COWCODE)
   #  dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1976 & dta[[noquote(paste(call$ci))]]=="Singapore", "820",dta$COWCODE)
   dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1976 & dta[[noquote(paste(call$ci))]]=="Vietnam, Republic of", "816",dta$COWCODE)
-  dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1979 & dta[[noquote(paste(call$ci))]]=="Dominica", "200",dta$COWCODE)
-  dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 2000 & dta[[noquote(paste(call$ci))]]=="Kiribati", "200",dta$COWCODE)
-  dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 2000 & dta[[noquote(paste(call$ci))]]=="Tonga", "200",dta$COWCODE)
   dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1993 & dta[[noquote(paste(call$ci))]]=="Slovakia", "315",dta$COWCODE)
-  dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1996 & dta[[noquote(paste(call$ci))]]=="Palua", "2",dta$COWCODE)
   dta$COWCODE <- ifelse(dta[[noquote(paste(call$ci))]]=="Zanzibar", "510",dta$COWCODE)
 
   cs <- na.omit(unique(dta$COWCODE))
@@ -292,11 +288,7 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
     dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1957 & dta[[noquote(paste(call$yi))]] < 1961 & dta[[noquote(paste(call$ci))]]=="Syria", "651",dta$COWCODE)
     #    dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1976 & dta[[noquote(paste(call$ci))]]=="Singapore", "820",dta$COWCODE)
     dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1976 & dta[[noquote(paste(call$ci))]]=="Vietnam, Republic of", "816",dta$COWCODE)
-    dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1979 & dta[[noquote(paste(call$ci))]]=="Dominica", "200",dta$COWCODE)
-    dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 2000 & dta[[noquote(paste(call$ci))]]=="Kiribati", "200",dta$COWCODE)
-    dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 2000 & dta[[noquote(paste(call$ci))]]=="Tonga", "200",dta$COWCODE)
     dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1993 & dta[[noquote(paste(call$ci))]]=="Slovakia", "315",dta$COWCODE)
-    dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1996 & dta[[noquote(paste(call$ci))]]=="Palau", "2",dta$COWCODE)
     dta$COWCODE <- ifelse(dta[[noquote(paste(call$ci))]]=="Zanzibar", "510",dta$COWCODE)
 
 
