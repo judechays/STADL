@@ -10,10 +10,10 @@ name_text(countryname)
 \item{countryname}{Country name as it appears in cshapes.}
 }
 \value{
-The output will be the country war code, start and end date of the country in cshapes data.
+The output will be the country COW code, start and end date of the country in cshapes data.
 }
 \description{
-\code{name_text} function to get country war codes, start and ending dates if you have country name.
+\code{name_text} function to get country COW codes, start and ending dates if you have a country's name.
 }
 \examples{
 name_text("Uruguay")

@@ -2,19 +2,19 @@
 % Please edit documentation in R/matching_names.R
 \name{name_code}
 \alias{name_code}
-\title{Matching your data with cshapes if you have country war codes.}
+\title{Matching your data with cshapes if you have country Correlates of War (COW) codes (cowcode).}
 \usage{
-name_code(gw_code)
+name_code(cowcode)
 }
 \arguments{
-\item{gw_code}{Country Gleditsch and Ward code.}
+\item{cowcode}{Country Correlates of War code (cowcode).}
 }
 \value{
-The output will be the country name as it appears in cshapes, start and end date of the country in cshapes data.
+The output will be the country name as it appears in cshapes, as well as the country's entry into and exit from cshapes dates.
 }
 \description{
-\code{name_code} function to get country name in cshapes if you have war code.
-It also provides you start and end date.
+\code{name_code} A function to get the country name in cshapes, if you have the cowcode.
+It also provides the country's entry into and exit from cshapes dates.
 }
 \examples{
 name_code(2)

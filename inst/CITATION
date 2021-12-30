@@ -1,0 +1,29 @@
+citHeader("To cite 'tscsdep' in publications, please use:")
+
+citEntry(entry = "manual",
+    title = "{tscsdep}: {T}ools for analyzing country-year time-series-cross-sectional data with spatial and temporal dependence",
+    author = c(person(given = "Jude",
+                  family = "Hays",
+                  email = "jch61@pitt.edu",
+                  role = c("aut", "cre")),
+            person(given = "Valentina",
+                  family = "González-Rostani",
+                  email = "mag384@pitt.edu",
+                   role = c("aut")),
+            person(given = "Scott",
+                  family = "Cook",
+                  email = "sjcook@tamu.edu",
+                   role = c("aut")),
+            person(given = "Robert",
+                  family = "Franzese",
+                  email = "franzese@umich.edu",
+                   role = c("aut"))
+                  ),
+    note = "version 0.1.0",
+    year = "2021",
+    url = "https://github.com/judechays/STADL",
+    textVersion  = paste("Hays, Jude C., Valentina González-Rostani, Scott Cook, and Robert Franzese. (2021).",
+        "{tscsdep}: {T}ools for analyzing country-year time-series-cross-sectional data with spatial and temporal dependence.",
+        "version 0.1.0.",
+        "https://github.com/judechays/STADL")
+)

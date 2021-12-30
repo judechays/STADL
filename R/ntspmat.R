@@ -133,7 +133,7 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
 
 
   if(nrow(start_match2) > 0) {
-    stargazer(start_match2,type="text",summary=FALSE)
+    stargazer(start_match2[,c(1,2)],type="text",summary=FALSE)
     stop('Some of your Country-Years are not Matched. You can use the following functions to help you match Country Names and Years of your data with cshapes: names_list() provides the list of all country names, and to check starting and ending date use name_text("Country Name") or name_code(warcode)')
   }
 
