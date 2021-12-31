@@ -708,7 +708,7 @@ Countries are Matched.”*
 
 ##### SAR `ntspreg`
 
-In this model, ρ is the coeffocient for the spatially lagged outcome
+In this model, ρ is the coefficient for the spatially lagged outcome
 variable.
 
 ``` r
