@@ -590,7 +590,7 @@ The `make_ntspmat` function generates the weights matrix year by year. While run
 
 ##### SAR `ntspreg`
 
-In this model, ρ is the coeffocient for the spatially lagged outcome variable.
+In this model, ρ is the coeffcient for the spatially lagged outcome variable.
 
 ```{r,eval=F}
 lag <- ntspreg(reg,W)
