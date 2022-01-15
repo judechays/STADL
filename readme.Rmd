@@ -763,7 +763,7 @@ citation("tscsdep")
 
 ## Authors
 
-Jude Hays ([jch61\@pitt.edu](mailto:jch61@pitt.edu){.email}), Valentina González-Rostani ([mag384\@pitt.edu](mailto:mag384@pitt.edu){.email}), Scott Cook ([sjcook\@tamu.edu](mailto:sjcook@tamu.edu){.email}), and Robert Franzese ([franzese\@umich.edu](mailto:franzese@umich.edu){.email})
+Jude Hays ([jch61\@pitt.edu](mailto:jch61@pitt.edu){.email}), Valentina González-Rostani ([mag384\@pitt.edu](mailto:mag384@pitt.edu){.email}), Scott Cook ([sjcook\@tamu.edu](mailto:sjcook@tamu.edu){.email}), Robert Franzese ([franzese\@umich.edu](mailto:franzese@umich.edu){.email}), and Wooseok Kim ([wskr\@umich.edu](mailto:wskr@umich.edu){.email})
 
 ### Mantainer 
 

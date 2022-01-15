@@ -708,7 +708,7 @@ Countries are Matched.”*
 
 ##### SAR `ntspreg`
 
-In this model, ρ is the coefficient for the spatially lagged outcome
+In this model, ρ is the coeffcient for the spatially lagged outcome
 variable.
 
 ``` r
@@ -901,8 +901,8 @@ citation("tscsdep")
 ## Authors
 
 Jude Hays (<jch61@pitt.edu>), Valentina González-Rostani
-(<mag384@pitt.edu>), Scott Cook (<sjcook@tamu.edu>), and Robert Franzese
-(<franzese@umich.edu>)
+(<mag384@pitt.edu>), Scott Cook (<sjcook@tamu.edu>), Robert Franzese
+(<franzese@umich.edu>), and Wooseok Kim (<wskr@umich.edu>)
 
 ### Mantainer
 
