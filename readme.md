@@ -882,16 +882,17 @@ citation("tscsdep")
 #> 
 #> To cite 'tscsdep' in publications, please use:
 #> 
-#>   Hays, Jude C., Valentina González-Rostani, Scott Cook, and Robert
-#>   Franzese. (2021). {tscsdep}: {T}ools for analyzing country-year
-#>   time-series-cross-sectional data with spatial and temporal
-#>   dependence. version 0.1.0. https://github.com/judechays/STADL
+#>   Hays, Jude C., Valentina González-Rostani, Scott Cook, Robert
+#>   Franzese, and Wooseok Kim. (2021). {tscsdep}: {T}ools for analyzing
+#>   country-year time-series-cross-sectional data with spatial and
+#>   temporal dependence. version 0.1.0.
+#>   https://github.com/judechays/STADL
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {{tscsdep}: {T}ools for analyzing country-year time-series-cross-sectional data with spatial and temporal dependence},
-#>     author = {Jude Hays and Valentina González-Rostani and Scott Cook and Robert Franzese},
+#>     author = {Jude Hays and Valentina González-Rostani and Scott Cook and Robert Franzese and Wooseok Kim},
 #>     note = {version 0.1.0},
 #>     year = {2021},
 #>     url = {https://github.com/judechays/STADL},
