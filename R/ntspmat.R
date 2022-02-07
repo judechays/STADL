@@ -107,7 +107,7 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
   # Check to see if COW entry data precedes entry date in dataset. If diff2 == 1, this condition does not hold. If diff2 < 0, condition holds.
 
   start_match$diff<- start_match$COWSYEAR - as.numeric(as.character(eval(parse(text=noquote(paste("start_match$",call$yi,sep=""))))))
-  start_match$diff2 <- ifelse(start_match$diff > 0, 1, start_match$diff)
+  start_match$diff2 <- ifelse(start_match$diff >= 0, 1, start_match$diff)
 
   # Identify Countries that enter the dataset prior to entering COW or have missing COW codes
 
@@ -118,9 +118,9 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
 
   if(nrow(start_match2) > 0) {
     start_match2 <- rbind(start_match2,start_match)
+  } else{
+    start_match2 <- start_match
   }
-
-  start_match2 <- start_match
 
   start_match2<-start_match2[,c(paste(call$ci),paste(call$yi),"CNTRY_NAME","COWSYEAR")]
   colnames(start_match2)<-c("Data Country Name", "Data Start Year","COW Country Name","COW Start Year")
