@@ -548,11 +548,11 @@ functions.
 
 **Fixing country names**
 
-The following code, using the `recode_factor` function from the
-`DataCombine` package, re-names the unmatched countries.
+The following code, using the `recode_factor` function from the `dplyr`
+package, re-names the unmatched countries.
 
 ``` r
-library (DataCombine)
+library (dplyr)
 
 data$country<-recode_factor(data$country,"Belarus"="Belarus (Byelorussia)")
 data$country<-recode_factor(data$country,"Burkina Faso"="Burkina Faso (Upper Volta)")
