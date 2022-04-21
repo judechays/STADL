@@ -157,11 +157,11 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
 
   dta <-df.m[which(eval(parse(text=noquote(paste("df.m$",call$yi,sep=""))))==as.numeric(as.character(y[1]))), ]
 
-  # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1989 & dta[[noquote(paste(call$ci))]]=="German Federal Republic", "255",dta$COWCODE)
-  # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1989 & dta[[noquote(paste(call$ci))]]=="Yemen (Arab Republic of Yemen)", "679",dta$COWCODE)
-  # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1968 & dta[[noquote(paste(call$ci))]]=="Yemen, People's Republic of", "678",dta$COWCODE)
-  # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1989 & dta[[noquote(paste(call$ci))]]=="Yemen, People's Republic of", "679",dta$COWCODE)
-  # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 2002 & dta[[noquote(paste(call$ci))]]=="East Timor", "850",dta$COWCODE)
+  dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1989 & dta[[noquote(paste(call$ci))]]=="German Federal Republic", "255",dta$COWCODE)
+   dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1989 & dta[[noquote(paste(call$ci))]]=="Yemen (Arab Republic of Yemen)", "679",dta$COWCODE)
+   dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1968 & dta[[noquote(paste(call$ci))]]=="Yemen, People's Republic of", "678",dta$COWCODE)
+   dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1989 & dta[[noquote(paste(call$ci))]]=="Yemen, People's Republic of", "679",dta$COWCODE)
+   dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 2002 & dta[[noquote(paste(call$ci))]]=="East Timor", "850",dta$COWCODE)
   # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1991 & dta[[noquote(paste(call$ci))]]=="Latvia", "365",dta$COWCODE)
   # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1992 & dta[[noquote(paste(call$ci))]]=="Ukraine", "365",dta$COWCODE)
   # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1992 & dta[[noquote(paste(call$ci))]]=="Armenia", "365",dta$COWCODE)
@@ -256,11 +256,11 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
     dta <-df.m[which(eval(parse(text=noquote(paste("df.m$",call$yi,sep=""))))==as.numeric(as.character(y[i]))), ]
     #These are less than ideal workarounds for illustrations. Country names stay the same, but cowcodes change in 1992.
 
-    # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1989 & dta[[noquote(paste(call$ci))]]=="German Federal Republic", "255",dta$COWCODE)
-    # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1989 & dta[[noquote(paste(call$ci))]]=="Yemen (Arab Republic of Yemen)", "679",dta$COWCODE)
-    # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1968 & dta[[noquote(paste(call$ci))]]=="Yemen, People's Republic of", "678",dta$COWCODE)
-    # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1989 & dta[[noquote(paste(call$ci))]]=="Yemen, People's Republic of", "679",dta$COWCODE)
-    # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 2002 & dta[[noquote(paste(call$ci))]]=="East Timor", "850",dta$COWCODE)
+     dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1989 & dta[[noquote(paste(call$ci))]]=="German Federal Republic", "255",dta$COWCODE)
+     dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1989 & dta[[noquote(paste(call$ci))]]=="Yemen (Arab Republic of Yemen)", "679",dta$COWCODE)
+     dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1968 & dta[[noquote(paste(call$ci))]]=="Yemen, People's Republic of", "678",dta$COWCODE)
+     dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] > 1989 & dta[[noquote(paste(call$ci))]]=="Yemen, People's Republic of", "679",dta$COWCODE)
+     dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 2002 & dta[[noquote(paste(call$ci))]]=="East Timor", "850",dta$COWCODE)
     # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1991 & dta[[noquote(paste(call$ci))]]=="Latvia", "365",dta$COWCODE)
     # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1992 & dta[[noquote(paste(call$ci))]]=="Ukraine", "365",dta$COWCODE)
     # dta$COWCODE <- ifelse(dta[[noquote(paste(call$yi))]] < 1992 & dta[[noquote(paste(call$ci))]]=="Armenia", "365",dta$COWCODE)
