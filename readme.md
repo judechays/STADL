@@ -962,13 +962,6 @@ Science Review*.
 
 </div>
 
-<div id="ref-datacomb21" class="csl-entry">
-
-Gandrud, Christopher. 2016. *DataCombine: Tools for Easily Combining and
-Cleaning Data Sets*. <https://CRAN.R-project.org/package=DataCombine>.
-
-</div>
-
 <div id="ref-cshapes21" class="csl-entry">
 
 Weidmann, Nils B., Guy Schvitz, and Luc Girardin. 2021. *Cshapes: The
