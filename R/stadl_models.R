@@ -15,14 +15,12 @@
 #' @export
 ntspreg <- function(lmobj,wm) {
 
-  weights <- mat2listw(wm, row.names=NULL, style="W")
+  weights <- mat2listw(wm[[2]], row.names=NULL, style="W")
   nblist <-weights$neighbours
   listw <-nb2listw(nblist)
 
   formula <- lmobj[["call"]][["formula"]]
-  esample<-rownames(as.matrix(lmobj[["residuals"]]))
-  df <- eval(lmobj[["call"]][["data"]])
-  df <- df[esample,]
+  df <- eval(wm[[1]])
 
   lag = spatialreg::lagsarlm(formula, data=df, listw=listw ,method="eigen",zero.policy=TRUE, tol.solve=1.0e-10)
   return(lag)
@@ -43,14 +41,12 @@ ntspreg <- function(lmobj,wm) {
 #' @export
 ntsperr <- function(lmobj,wm) {
 
-  weights <- mat2listw(wm, row.names=NULL, style="W")
+  weights <- mat2listw(wm[[2]], row.names=NULL, style="W")
   nblist <-weights$neighbours
   listw <-nb2listw(nblist)
 
   formula <- lmobj[["call"]][["formula"]]
-  esample<-rownames(as.matrix(lmobj[["residuals"]]))
-  df <- eval(lmobj[["call"]][["data"]])
-  df <- df[esample,]
+  df <- eval(wm[[1]])
 
   err = spatialreg::errorsarlm(formula, data=df, listw=listw ,method="eigen",zero.policy=TRUE, tol.solve=1.0e-11)
   return(err)
@@ -71,14 +67,12 @@ ntsperr <- function(lmobj,wm) {
 #' @export
 ntspsac <- function(lmobj,wm) {
 
-  weights <- mat2listw(wm, row.names=NULL, style="W")
+  weights <- mat2listw(wm[[2]], row.names=NULL, style="W")
   nblist <-weights$neighbours
   listw <-nb2listw(nblist)
 
   formula <- lmobj[["call"]][["formula"]]
-  esample<-rownames(as.matrix(lmobj[["residuals"]]))
-  df <- eval(lmobj[["call"]][["data"]])
-  df <- df[esample,]
+  df <- eval(wm[[1]])
 
   sac = spatialreg::sacsarlm(formula, data=df, listw=listw ,method="eigen",zero.policy=TRUE, tol.solve=1.0e-10)
   return(sac)

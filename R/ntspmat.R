@@ -243,6 +243,7 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
 
   cyi <- as.data.frame(coln)
   nnmat_b <- nnmat
+  dfo <- dta
 
   print(noquote(as.character(y[1])))
   print(noquote(as.character(cs)))
@@ -355,6 +356,7 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
     cyi <- rbind(as.data.frame(cyi),as.data.frame(coln))
 
     nnmat_b <- bdiag(nnmat_b,nnmat)
+    dfo <- rbind(dfo,dta)
     print(noquote(as.character(y[i])))
     print(noquote(cs))
     print("All of your Countries are Matched.", quote=FALSE)
@@ -362,7 +364,6 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
   }
 
   nnmat <- as.matrix(nnmat_b)
-  wm2<-(list(df.m,nnmat,cyi))
-  w2 <- as.matrix(wm2[[2]])
-  return(w2)
+  wm2<-(list(dfo,nnmat))
+  return(wm2)
 }

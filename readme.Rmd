@@ -194,177 +194,7 @@ name_text("Uruguay")
 ```
 
 
-<!-- 
-## Example 1 
 
-The data used in the following example come from Miguel, Edward, and Shanker Satyanath. 2011. "Re-examining Economic Shocks and Civil Conflict." American Economic Journal: Applied Economics, 3 (4): 228-32. DOI: 10.1257/app.3.4.228 The Miguel and Satyanath dataset contains data on rainfall, economic growth, and civil conflict for the period 1981–1999.
-
-
-### Re-examining Economic Shocks and Civil Conflict (Edward Miguel and Shanker Satyanath, 2011)
-
-#### Load data
-
-To begin we read the data and run the non-spatial linear regression that we will use to create the spatial weights matrix.
-
-```{r, eval=F}
-library(tscsdep)
-```
-
-```{r, eval=F}
-library(haven)
-data <- read_dta("./inst/extdata/AEJApp_2011-0102_Stata-data-file.dta")
-
-```
-
-#### OLS Estimation
-
-```{r, eval=F}
-# Panel C: reduced form
-reg <- lm(any_prio_mss ~ gpcp_g + gpcp_g_l +as.factor(year)+as.factor(country_name), data=data)
-```
-
-#### Create the Weight Matrix: make_ntspmat
-
-Once we have estimated our OLS model we can run the `make_ntspmat` function, which will create a nearest neighbor spatial weights matrix, if all country names and time periods in the dataset match with those used and covered in `cshapes`.
-
-We start by assuming the country names in the Miguel and Satyanath (2011) dataset match the country names in the `cshapes` package. Unfortunately, they do not match perfectly, and we receive an error message: *"Error in make_ntspmat(reg, country_name, year, 2): Some of your Country-Years are not Matched"*
-
-Specifically, in this data, there are 7 countries with names that do not match. We can solve this problem by re-naming these countries. For example "Ivory Coast" should be "Cote D'Ivoire". The country names used in `cshapes` are provided by the helper function `names_list()`.  You can also check the start (entry) and end (exit) dates using `name_text("Country Name")` and `name_code(cowcode)` helper functions.
-
-```{r, eval=FALSE}
-W <- make_ntspmat(reg,country_name,year,2)
-```
-
-``` {}
-==============================================================================
-       Data Country Name       Data Start Year COW Country Name COW Start Year
-------------------------------------------------------------------------------
-1         Burkina Faso              1981                                      
-2         Ivory Coast               1981                                      
-3          Madagascar               1981                                      
-4          Swaziland                1981                                      
-5 Tanzania, United Republic of      1981                                      
-6            Zaire                  1981                                      
-7           Zimbabwe                1981                                      
-------------------------------------------------------------------------------
-```
-
-The following code, using the `DataCombine` package, re-names the unmatched countries.
-
-```{r, eval=F}
-library (DataCombine)
-
-data$country_name<-recode_factor(data$country_name,"Burkina Faso"="Burkina Faso (Upper Volta)")
-data$country_name<-recode_factor(data$country_name,"Ivory Coast"="Cote D'Ivoire")
-data$country_name<-recode_factor(data$country_name,"Madagascar"="Madagascar (Malagasy)")
-data$country_name<-recode_factor(data$country_name,"Swaziland"="Swaziland (Eswatini)")
-data$country_name<-recode_factor(data$country_name,"Tanzania, United Republic of"="Tanzania (Tanganyika)")
-data$country_name<-recode_factor(data$country_name,"Zaire"="Congo, Democratic Republic of (Zaire)")
-data$country_name<-recode_factor(data$country_name,"Zimbabwe"="Zimbabwe (Rhodesia)")
-
-```
-
-Once we have corrected the country names, we can re-estimate the non-spatial linear regression model and the `make_ntspmat`. The function generates the weights matrix year by year. While running, each year's cross-section with sample countries identified by COW codes will be displayed. If the function stops before the end of the sample you will be able to recognize the problematic cross-section (year). If all of the countries in a given cross-section match with `cshapes`, you will see a message saying *"All of your Countries are Matched."*
-
-```{r, eval=F}
-reg<- lm(any_prio_mss ~ gpcp_g + gpcp_g_l +as.factor(year)+as.factor(country_name), data=data)
-
-W <- make_ntspmat(reg,country_name,year,2)
-
-```
-
-```{}
-#> [1] 1981
-#>  [1] 404 420 432 433 434 435 436 437 438 439 450 451 452 461 471 475 481 482 483
-#> [20] 484 490 500 501 510 516 517 520 522 530 540 541 551 552 553 560 570 571 572
-#> [39] 580 625
-#> [1] 1982
-#>  [1] 404 420 432 433 434 435 436 437 438 439 450 451 452 461 471 475 481 482 483
-#> [20] 484 490 500 501 510 516 517 520 522 530 540 541 551 552 553 560 570 571 572
-#> [39] 580 625
-#> [1] All of your Countries are Matched.
-#> .
-#> .
-#> .
-#> [1] 1998
-#>  [1] 404 420 432 433 434 435 436 437 438 439 451 452 461 471 475 481 482 483 484
-#> [20] 490 500 501 510 516 517 530 540 541 551 552 553 560 565 570 571 572 580 625
-#> [1] All of your Countries are Matched.
-#> [1] 1999
-#>  [1] 404 420 432 433 434 435 436 437 438 439 451 452 461 471 475 481 482 483 484
-#> [20] 500 501 510 516 517 530 540 541 551 552 553 560 565 570 571 572 580
-#> [1] All of your Countries are Matched.
-```
-
-#### Estimate Spatial Lag Models
-
-**W** is the two-country nearest-neighbor weights matrix.
-
-
-##### SAR `ntspreg`
-
-Now, we are ready to run the function `ntspreg`, which returns a list of output from the `lagsarlm` function. This accounts for spatial dependence in the outcome, civil conflict, and distributed lag temporal dependence in the relationship between civil conflict and economic shocks.
-
-With the SAR model we can see that we reject the null for $\rho$ with 99% of confidence $\rightarrow$ **spatial interdependence**.
-
-```{r, eval=F}
-sar_reex <- ntspreg(reg,W) 
-summary(sar_reex)
-```
-
-##### SEM `ntsperr`
-
-We can also compare the estimated SAR model with an Error model using the function $\texttt{ntsperr}$, which returns a list of output from the function $\texttt{errorsarlm}$ from the `spatialreg` package.
-
-With the error model we can see that we reject the null for $\lambda$ with 99% of confidence $\rightarrow$ **clustering in the unobservables** 
-
-```{r, eval=FALSE}
-sdem_reex <- ntsperr(reg,wm)
-summary(sdem_reex)
-```
-
-##### SAC `ntspsac`
-
-We can also compare the previous models with a SAC specification using the function $\texttt{ntspsac}$, which returns a list of output from the function $\texttt{sacsarlm}$ from the `spatialreg` package.
-
-With the SAC model we can see that we reject the null for $\lambda$ with 95% of confidence, and the null for  $\rho$ with 99% of confidence $\rightarrow$  **clustering in the disturbances by allowing them to follow a spatial AR process**.
-
-```{r, eval=FALSE}
-sac_reex <- ntspsac(reg,wm)
-summary(sac_reex)
-```
-
-##### Interpretation and diagnostic
-
-You can run different models, compare the BIC of each one of them, and whether there are indications of interdependence and clustering in the unobservables.
-
-```{r, eval=FALSE}
-BIC(sar_reex)
-BIC(sdem_reex)
-BIC(sac_reex)
-
-```
-
-In this example the *SAR* model is the one with the lowest BIC.
-
-You can also extract the log-likelihood of each model. 
-
-```{r, eval=FALSE}
-logLik(sar_reex)
-logLik(sdem_reex)
-logLik(sac_reex)
-```
-#### What is next?
-
-You can repeat the process using a different number of $k$ neighbors. 
-
-```{r, eval=F}
-reg<- lm(any_prio_mss ~ gpcp_g + gpcp_g_l +as.factor(year)+as.factor(ccode), data=data)
-
-wm <- make_ntspmat(reg,country_name,year,10)
-
-```
--->
 
 ## Example: Income and Democracy (Acemoglu et al., 2008)
 
@@ -377,13 +207,13 @@ We start by matching country names and creating the spatial weights matrix. Then
 
 #### Load data
 
-```{r,eval=F}
+```{r,eval=T}
 data<-read.csv("./inst/extdata/aer_5year_APSR_full.csv")
 ```
 
 #### OLS estimation
 
-```{r,eval=F}
+```{r,eval=T}
 reg<-lm(formula = polity4 ~ polity4L + lrgdpchL + as.factor(year), data = data)
 ```
 
@@ -437,7 +267,7 @@ In this dataset, there are 29 countries with names that do not match the country
 
 The following code, using the `recode_factor` function from the `dplyr` package, re-names the unmatched countries.
 
-```{r, eval=F}
+```{r, eval=T}
 library (dplyr)
 
 data$country<-recode_factor(data$country,"Belarus"="Belarus (Byelorussia)")
@@ -471,7 +301,7 @@ data$country<-recode_factor(data$country,"Yemen"="Yemen (Arab Republic of Yemen)
 data$country<-recode_factor(data$country,"Zimbabwe"="Zimbabwe (Rhodesia)")
 ```
 
-```{r, eval=F}
+```{r, eval=T}
 reg<-lm(formula = polity4 ~ polity4L + lrgdpchL + as.factor(year), data = data)
 summary(reg)
 ```
