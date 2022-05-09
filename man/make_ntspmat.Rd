@@ -17,7 +17,7 @@ make_ntspmat(lmobj, ci, yi, k)
 neighbors.}
 }
 \value{
-The output will be a matrix.
+The output will be a list.
 }
 \description{
 \code{make_ntspmat} generates a nearest neighbor spatial

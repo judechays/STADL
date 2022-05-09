@@ -5,7 +5,7 @@
 #' and a linear regression model.
 #'
 #' @param lmobj An object created by the \code{lm} function.
-#' @param wm neighbor spatial weight matrix created by the \code{make_ntspmat}.
+#' @param wm a list, which includes the spatial weights matrix, created by the \code{make_ntspmat}.
 #' @return The output will be SAR model estimated.
 #' @examples
 #' \dontrun{

@@ -9,7 +9,7 @@
 #' @param yi Name of a variable that identifies years.
 #' @param k A value that determines the number of nearest
 #' neighbors.
-#' @return The output will be a matrix.
+#' @return The output will be a list.
 #'
 #' @examples
 #' df <- data.frame(
@@ -364,6 +364,6 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
   }
 
   nnmat <- as.matrix(nnmat_b)
-  wm2<-(list(dfo,nnmat))
-  return(wm2)
+  wm<-(list(dfo,nnmat,noquote(paste(call$ci)),noquote(paste(call$yi))))
+  return(wm)
 }

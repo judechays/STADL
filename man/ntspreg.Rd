@@ -9,7 +9,7 @@ ntspreg(lmobj, wm)
 \arguments{
 \item{lmobj}{An object created by the \code{lm} function.}
 
-\item{wm}{neighbor spatial weight matrix created by the \code{make_ntspmat}.}
+\item{wm}{a list, which includes the spatial weights matrix, created by the \code{make_ntspmat}.}
 }
 \value{
 The output will be SAR model estimated.
