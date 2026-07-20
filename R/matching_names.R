@@ -20,14 +20,14 @@ name_code <- function(cowcode) {
 #'
 #' \code{names_list} this function provides you with the list of all country names in cshapes.
 #'
-#' @param a it can be anything, or left empty.
-#' @return The output will be a list of all country name in cshapes.
+#' @param a Optional compatibility argument. It is unused and may be left empty.
+#' @return A character vector of country names from cshapes.
 #' @examples
 
 #' names_list()
 
 #' @export
-names_list <- function(a) {
+names_list <- function(a = NULL) {
   cs2<-cshp(date = NA, useGW = FALSE, dependencies = FALSE)
   x <- unique(cs2$country_name)
   return(x)

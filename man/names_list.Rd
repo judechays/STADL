@@ -4,13 +4,13 @@
 \alias{names_list}
 \title{Matching your data with cshapes - list of country names.}
 \usage{
-names_list(a)
+names_list(a = NULL)
 }
 \arguments{
-\item{a}{it can be anything, or left empty.}
+\item{a}{Optional compatibility argument. It is unused and may be left empty.}
 }
 \value{
-The output will be a list of all country name in cshapes.
+A character vector of country names from cshapes.
 }
 \description{
 \code{names_list} this function provides you with the list of all country names in cshapes.
