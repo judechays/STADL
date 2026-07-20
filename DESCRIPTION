@@ -38,7 +38,5 @@ RoxygenNote: 7.3.2
 Suggests: 
     knitr,
     rmarkdown,
-    DataCombine,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-VignetteBuilder: knitr
