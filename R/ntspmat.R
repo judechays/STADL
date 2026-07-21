@@ -143,7 +143,7 @@ make_ntspmat <- function(lmobj,ci,yi,k) {
   o <- match(eval(parse(text=noquote(paste("df$",call$ci,sep="")))),cow$CNTRY_NAME)
   cow<-cow[o,]
   df.m <- cbind(df,cow)
-  df.m$coln <- paste(df.m$COWCODE,df.m$year,sep=".")
+  df.m$coln <- paste(df.m$COWCODE,df.m[[noquote(paste(call$yi))]],sep=".")
 
 
   # Create a Distance Matrix for the first year in the user's dataset.

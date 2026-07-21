@@ -12,15 +12,15 @@ ntspsac(lmobj, wm)
 \item{wm}{neighbor spatial weight matrix created by the \code{make_ntspmat}.}
 }
 \value{
-The output will be SAR model estimated.
+An object of class \code{"Sarlm"} containing the fitted SAC model.
 }
 \description{
-\code{ntspsac} estimates a Spatial Autocorrelation (SAC) model (spatialreg::sacsarlm)
+\code{ntspsac} estimates a spatial lag and spatial error (SAC) model (spatialreg::sacsarlm)
 using the nearest neighbor spatial weights matrix you previously created
 and a linear regression model.
 }
 \examples{
 \dontrun{
-sac_reex <- ntsperr(ols,wm)
+sac_reex <- ntspsac(ols,wm)
 }
 }

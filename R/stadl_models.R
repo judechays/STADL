@@ -6,7 +6,7 @@
 #'
 #' @param lmobj An object created by the \code{lm} function.
 #' @param wm a list, which includes the spatial weights matrix, created by the \code{make_ntspmat}.
-#' @return The output will be SAR model estimated.
+#' @return An object of class \code{"Sarlm"} containing the fitted spatial lag model.
 #' @examples
 #' \dontrun{
 #' sar_reex <- ntspreg(ols,wm)
@@ -33,10 +33,10 @@ ntspreg <- function(lmobj,wm) {
 #'
 #' @param lmobj An object created by the \code{lm} function.
 #' @param wm neighbor spatial weight matrix created by the \code{make_ntspmat}.
-#' @return The output will be SAR model estimated.
+#' @return An object of class \code{"Sarlm"} containing the fitted spatial error model.
 #' @examples
 #' \dontrun{
-#' sdem_reex <- ntsperr(ols,wm)
+#' sem_reex <- ntsperr(ols,wm)
 #' }
 #' @export
 ntsperr <- function(lmobj,wm) {
@@ -53,16 +53,16 @@ ntsperr <- function(lmobj,wm) {
 }
 #' Estimates a Spatial Autocorrelation (SAC) lag model.
 #'
-#' \code{ntspsac} estimates a Spatial Autocorrelation (SAC) model (spatialreg::sacsarlm)
+#' \code{ntspsac} estimates a spatial lag and spatial error (SAC) model (spatialreg::sacsarlm)
 #' using the nearest neighbor spatial weights matrix you previously created
 #' and a linear regression model.
 #'
 #' @param lmobj An object created by the \code{lm} function.
 #' @param wm neighbor spatial weight matrix created by the \code{make_ntspmat}.
-#' @return The output will be SAR model estimated.
+#' @return An object of class \code{"Sarlm"} containing the fitted SAC model.
 #' @examples
 #' \dontrun{
-#' sac_reex <- ntsperr(ols,wm)
+#' sac_reex <- ntspsac(ols,wm)
 #' }
 #' @export
 ntspsac <- function(lmobj,wm) {
