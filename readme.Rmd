@@ -109,38 +109,7 @@ ntspsac(ols, W)
 * <p style="color: #ff6600"> Outputs (orange)</p> <p><b>make_ntspmat()</b> returns a four-element list containing the aligned data, spatial weights matrix, and country/year-column metadata. <b>ntspreg()</b>, <b>ntsperr()</b>, and <b>ntspsac()</b> return fitted objects of class <code>"Sarlm"</code>. The other functions return effect summaries or country-name/code information according to their individual documentation.</p>
 
 
-```{r, echo = FALSE, message = FALSE, warning=FALSE, eval=TRUE}
-library(dagitty)
-library(ggdag)
-library(ggplot2)
-
-
-
-
-simple_dag <- dagify(
-  FW ~ lmobj + ci + yi + k,
-  FSAC ~ W + lmobj,
-  FSAR ~ W + lmobj,
-  FSEM ~ W + lmobj,
-  SAC ~ FSAC,
-  SAR ~ FSAR,
-  SEM ~ FSEM,
-  W ~ FW,
-  exposure = c("W","SAR","SEM", "SAC"),
-  outcome = c("FSAC", "FSAR","FSEM","FW"),
-  labels = c(FSAC = "ntspsac()", FSAR = "ntspreg()", FSEM = "ntsperr()", FW = "make_ntspmat()"),
-    coords = list(x = c(x = 1, a = 2, b = 2, y = 3),
-                y = c(x = 2, a = 1, b = 3, y = 2))
-)
-
-
-
-
-ggdag_status(simple_dag, 
-             use_labels = "label", size=2, color="black") +
-  guides(fill = FALSE, color = FALSE) +  
-  theme_dag()
-```
+![](man/Figures/stadl-dag.png)
 
 
 ### Tools for merging your data with `cshapes`

@@ -164,7 +164,7 @@ ntspsac(ols, W)
     according to their individual documentation.
     </p>
 
-![](readme_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](man/Figures/stadl-dag.png)<!-- -->
 
 ### Tools for merging your data with `cshapes`
 
