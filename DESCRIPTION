@@ -32,11 +32,11 @@ Imports:
     sf,
     spatialreg,
     stargazer,
-    lubridate,
-    tidyverse
+    lubridate
 RoxygenNote: 7.3.2
 Suggests: 
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tidyverse
 Config/testthat/edition: 3
