@@ -3,10 +3,13 @@
 
 # The `tscsdep` package
 
+`STADL` is the model, project, and repository name; `tscsdep` is the
+installable R package name.
+
 <!-- badges: start -->
 
 [![CRAN
-status](https://www.r-pkg.org/badges/version/STADL)](https://CRAN.R-project.org/package=tscsdep)
+status](https://www.r-pkg.org/badges/version/tscsdep)](https://CRAN.R-project.org/package=tscsdep)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -15,7 +18,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 ## Description
 
 A package to help estimate some of the (linear) spatial and
-spatio-temporal autogressive models discussed in Cook, Hays and Franzese
+spatio-temporal autoregressive models discussed in Cook, Hays and Franzese
 (2020, 2021). The package provides tools to create geographic (k-nearest
 neighbor) spatial weights matrices for estimating Spatial AutoRegressive
 (SAR) models, Spatial Error Models (SEM), and Spatial Autocorrelation
@@ -32,10 +35,11 @@ The package can be installed using `devtools`
 
 ## Functions
 
-TSCS spatial weights matrices can be created for any cross-section of
-countries in the international system up until the year 2019, using the
-`cshapes` package. The cross-sections can change across years to account
-for country entry into and exit from the international system.
+Using the geographic coverage available in `cshapes` 2.0, TSCS spatial
+weights matrices can be created for any cross-section of countries in
+the international system through December 31, 2019. The cross-sections
+can change across years to account for country entry into and exit from
+the international system.
 
 <table>
 <colgroup>
@@ -97,7 +101,7 @@ the spatial weights matrix, **W**.
 
 The package also provides convenient wrapper functions to estimate the
 **SAR**, **SEM** and **SAC** models using the spatial weights matrix,
-**W**. The wrappers call the `largsarlm`, `errorsarlm`, and `sacsarlm`
+**W**. The wrappers call the `lagsarlm`, `errorsarlm`, and `sacsarlm`
 functions from the `spatialreg` package. The main advantage of the
 wrapper functions is that they process the weights matrix created by
 `make_ntspmat` for use with the `spatialreg` functions.
@@ -133,29 +137,31 @@ ntspsac(ols, W)
     Functions (blue)
     </p>
     <p>
-    The package includes four functions: <b>make_ntspmat()</b>,
-    <b>ntspreg()</b>, <b>netsperr()</b>, and <b>ntspsac()</b>. These
-    functions take inputs (arguments) and return outputs (lists).
+    The package includes eight functions: <b>make_ntspmat()</b>,
+    <b>ntspreg()</b>, <b>ntsperr()</b>, <b>ntspsac()</b>,
+    <b>st_effects()</b>, <b>name_code()</b>, <b>name_text()</b>, and
+    <b>names_list()</b>. Each exported function has its own documented
+    arguments and return value.
     </p>
 
 -   <p style="color:#808080">
     Inputs (grey)
     </p>
     <p>
-    The functions take four inputs: country names <b>ci</b>, years
-    <b>yi</b>, number of neighbors <b>k</b>, and the returned list from
-    calling the linear model (lm) function <b>lmobj</b>.
+    <b>make_ntspmat()</b> takes <b>lmobj</b>, <b>ci</b>, <b>yi</b>, and
+    <b>k</b>. The other functions have their own documented arguments.
     </p>
 
 -   <p style="color: #ff6600">
     Outputs (orange)
     </p>
     <p>
-    Each function returns an output. The function <b>make_ntspmat()</b>
-    returns a k-nearest neighbor spatial weights matrix. The functions
-    <b>ntspreg()</b>, <b>netsperr()</b>, and <b>ntspsac()</b> return
-    lists of results from the estimation of their respective spatial
-    regression models.
+    <b>make_ntspmat()</b> returns a four-element list containing the
+    aligned data, spatial weights matrix, and country/year-column
+    metadata. <b>ntspreg()</b>, <b>ntsperr()</b>, and <b>ntspsac()</b>
+    return fitted objects of class <code>"Sarlm"</code>. The other
+    functions return effect summaries or country-name/code information
+    according to their individual documentation.
     </p>
 
 ![](readme_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
