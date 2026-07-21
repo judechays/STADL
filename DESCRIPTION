@@ -38,6 +38,5 @@ Suggests:
     knitr,
     pkgload,
     rmarkdown,
-    testthat (>= 3.0.0),
-    tidyverse
+    testthat (>= 3.0.0)
 Config/testthat/edition: 3
