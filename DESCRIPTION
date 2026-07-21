@@ -36,6 +36,7 @@ Imports:
 RoxygenNote: 7.3.2
 Suggests: 
     knitr,
+    pkgload,
     rmarkdown,
     testthat (>= 3.0.0),
     tidyverse

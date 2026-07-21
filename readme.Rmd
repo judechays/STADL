@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-devtools::load_all()
+pkgload::load_all()
 library(cshapes)
 library(dplyr)
 library(Matrix)
