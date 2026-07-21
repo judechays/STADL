@@ -12,7 +12,7 @@ ntsperr(lmobj, wm)
 \item{wm}{neighbor spatial weight matrix created by the \code{make_ntspmat}.}
 }
 \value{
-The output will be SAR model estimated.
+An object of class \code{"Sarlm"} containing the fitted spatial error model.
 }
 \description{
 \code{ntsperr} estimates a Spatial error model (SEM) model (spatialreg::errorsarlm)
@@ -21,6 +21,6 @@ and a linear regression model.
 }
 \examples{
 \dontrun{
-sdem_reex <- ntsperr(ols,wm)
+sem_reex <- ntsperr(ols,wm)
 }
 }

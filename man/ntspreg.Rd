@@ -12,7 +12,7 @@ ntspreg(lmobj, wm)
 \item{wm}{a list, which includes the spatial weights matrix, created by the \code{make_ntspmat}.}
 }
 \value{
-The output will be SAR model estimated.
+An object of class \code{"Sarlm"} containing the fitted spatial lag model.
 }
 \description{
 \code{ntspreg} estimates a Spatial AutoRegressive (SAR) model (spatialreg::lagsarlm)
